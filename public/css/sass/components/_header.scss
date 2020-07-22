@@ -1,0 +1,125 @@
+.header{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50px;
+  background-color: var(--primary-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  color: white;
+
+  &__logo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    .icon{
+      font-size: 25px;
+      line-height: 18px;
+      padding: 0 20px 0 30px ;
+      cursor: pointer;
+
+
+    }
+    img{
+      margin-left: 20px;
+      object-fit: fill;
+      padding: 5px;
+      width: 70px;
+      height: 50px;
+    }
+  }
+
+  &__titulo{
+    text-transform: capitalize;
+    color: var(--title-color);
+  }
+
+  &__user{
+    position: relative;
+    max-width: 40px;
+    height: 100%;
+    margin-right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    i{
+      padding: 10px;
+      border-radius: 100px;
+      border: 2px solid white;
+    }
+
+  }
+  &__user-img{
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__user-menu{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 90vw;
+    max-width: 300px;
+    background-color: var(--secondary-color);
+    padding-top: 30px;
+    border-bottom: var(--border);
+    color: var(--text-color-dark);
+    font-weight: 700;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    img{
+      max-width: 100px;
+      max-height: 100px;
+      margin: 0 auto;
+      border-radius: 100%;
+      padding: 10px;
+      border: 3px solid var(--border-color);
+      object-fit: cover;
+    }
+
+    li{
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      &:nth-last-child(1){
+        border-color: transparent;
+      }
+      a{
+        display: block;
+        padding: 15px 20px;
+        text-transform: capitalize;
+        text-decoration: none;
+        transition: all linear .3s;
+        color: var(--text-color);
+        i{
+          color: var(--icon-color);
+          border:none;
+          margin-right: 10px;
+          transition: all linear .3s;
+        }
+      }
+    }
+    ul li{
+      &:hover{
+        background-color: var(--primary-color-hover);
+         i{ margin-right: 15px; color: var(--text-color-hover) }
+         a{ color: var(--text-color-hover); }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px){
+    .header__titulo{
+        font-size: 16px;
+    }
+    .header__titulo--description{
+        display: none;
+    }
+}

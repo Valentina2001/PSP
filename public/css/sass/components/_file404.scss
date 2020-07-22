@@ -1,0 +1,18 @@
+.file404{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../img/fondos/base404.png');
+    background-size: cover;
+    background-position: center center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__content{
+        text-align: center;
+        max-width: 500px;
+    }
+}

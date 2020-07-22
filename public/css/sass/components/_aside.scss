@@ -1,0 +1,96 @@
+.aside{
+    position: relative;
+    background-color: var(--aside-color);
+    width: 80px;
+    // width: 300px;
+    overflow-Y: auto;
+    overflow-x: hidden;
+    transition: all linear .3s;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 500;
+    box-shadow: var(--box-shadow);
+    cursor:pointer;
+    &__container{
+        position: relative;
+        width: 100%;
+        min-width: 300px;
+        list-style-type: none;
+    }
+    &__item{
+        border-bottom:  1px solid var(--border-color);
+        transition: all linear .1s;
+        &.active{
+          .rigth{
+            transform: rotate(-180deg);
+          }
+        }
+        &:hover,
+        &.activo{
+          background-color: var(--primary-color-hover);
+          div.aside__link, div a{
+            color:var(--text-color-hover);
+          }
+        }
+    }
+    &__content-item{
+        background-color: var(--terty-color);
+        a{
+          color: var(--text-color);
+        }
+    }
+    &__link{
+        display: block;
+        padding: 15px 20px;
+        color: var(--text-color);
+        a{ color: var(--text-color); }
+        &:hover{
+            text-decoration: none;
+            color: var(--text-color-hover);
+            .aside__icon.left{
+                margin-right: 5px;
+            }
+            a{
+              text-decoration: none;
+              color: var(--text-color-hover);
+            }
+        }
+    }
+
+    &__icon{
+        font-size: 25px;
+        line-height: 18px;
+        transition:  all linear .3s;
+        color: var(--icon-color);
+        &.left{
+            padding-left: 10px;
+            padding-right: 30px;
+
+        }
+        &.rigth{
+          margin: 5px 0;
+          float: right;
+        }
+    }
+    &__content-list{
+      li{
+        border-bottom: 1px solid var(--border-color) ;
+      }
+      display: none;
+    }
+
+    &__description{
+        text-align: center;
+        color: var(--text-color);
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (min-width: 600px){
+    .aside:hover{
+        width: 300px;
+    }
+}

@@ -1,0 +1,14 @@
+.lista-lenguajes{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  li{
+    text-align: center;
+    a{
+      padding: 20px;
+      display: block;
+      &:hover{
+        background-color: rgba(#afafaf, .2);
+      }
+    }
+  }
+}
