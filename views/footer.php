@@ -14,6 +14,7 @@
   <script src="<?php echo constant('URL') ?>public/js/buscador.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/lenguajes.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/modal-proyecto.js"></script>
+  <script src="<?php echo constant('URL') ?>public/js/tiempos.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/formulario-programador.js"></script>
 
 </body>

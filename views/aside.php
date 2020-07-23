@@ -36,7 +36,7 @@
                     case 'psp0':
                       echo '
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'" >Tiempos</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'gestionProyecto/tiempos" >Tiempos</a></div>
                         </li>
                         <li class="aside__item">
                             <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'" >Errores</a></div>
@@ -49,7 +49,7 @@
                     case 'psp01':
                       echo '
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'" >Tiempos</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'gestionProyecto/tiempos" >Tiempos</a></div>
                         </li>
                         <li class="aside__item">
                             <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'" >Errores</a></div>

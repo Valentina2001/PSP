@@ -76,6 +76,7 @@
       $this->loadModel('lenguajesModel');
       $this->view->listLenguajes = $this->model->getListado();
       $nombreLenguaje = "";
+
       foreach ($this->view->listLenguajes as $lenguaje ){
         if($lenguaje['idLenguaje'] == $proyectoData['idLenguaje']){
           $nombreLenguaje = $lenguaje['nombre'];
@@ -91,7 +92,45 @@
       ];
 
       $this->view->render('gestionProyecto/summary');
+    }
 
+    function tiempos(){
+      if($this->view->sesion->getSesion('proyecto') == -1){
+      }
+
+      $this->loadModel('faseModel');
+      $this->view->fases = $this->model->getListado();
+
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =   $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $resultValid = $this->model->validarAsociado($this->cedula, $idProyecto);
+
+      $this->loadModel('tiempoModel');
+      $this->view->data = $this->model->getListado($resultValid['idProyectoUsuario']);
+      $this->view->render('gestionProyecto/tiempos');
+    }
+
+    function tiempoRegistro(){
+      $this->loadModel('gestionProyetoModel');
+      $resultValid = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto']);
+      $data = [
+        'idTiempo' => getdate()[0],
+        'idProyectoUsuario' => $resultValid['idProyectoUsuario'],
+        'tiempoTotal' => (isset($_POST['tiempoTotal'])) ? $_POST['tiempoTotal'] : '',
+        'tiempoMuerto' => (isset($_POST['tiempoMuerto'])) ? $_POST['tiempoMuerto'] : '',
+        'fase' => (isset($_POST['fase'])) ? $_POST['fase'] : '',
+        'fechaIn' => (isset($_POST['fechaIn'])) ? $_POST['fechaIn'] : '',
+        'horaIn' => (isset($_POST['horaIn'])) ? $_POST['horaIn'] : '',
+        'fechaOut' => (isset($_POST['fechaOut'])) ? $_POST['fechaOut'] : '',
+        'horaOut' => (isset($_POST['horaOut'])) ? $_POST['horaOut'] : '',
+        'comentarios' => (isset($_POST['comentarios'])) ? $_POST['comentarios'] : '',
+        'interrupciones' => (isset($_POST['interrupciones'])) ? $_POST['interrupciones'] : '',
+      ];
+      $this->loadModel('tiempoModel');
+      $this->model->insert($data);
+
+      $this->tiempos();
+      echo "<script>swal('PSP', 'El registro de tiempo se guardo satisfactoriamente', 'success')</script>";
 
     }
 
