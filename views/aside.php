@@ -42,10 +42,10 @@
                             <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'gestionProyecto/tiempos" >Tiempos</a></div>
                         </li>
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'" >Errores</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'gestionProyecto/errores">Errores</a></div>
                         </li>
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-viruses"></i><a href="'.constant('URL').'" >Tipo errores</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-viruses"></i><a href="'.constant('URL').'gestionProyecto/tipoErrores">Tipo errores</a></div>
                         </li>
                       ';
                       break;
@@ -58,10 +58,10 @@
                             <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'gestionProyecto/tiempos" >Tiempos</a></div>
                         </li>
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'" >Errores</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'gestionProyecto/errores">Errores</a></div>
                         </li>
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-viruses"></i><a href="'.constant('URL').'" >Tipo errores</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-viruses"></i><a href="'.constant('URL').'gestionProyecto/tipoErrores">Tipo errores</a></div>
                         </li>
                         <li class="aside__item">
                             <div class="aside__link"><i class="aside__icon left  fas fa-exclamation-triangle"></i><a href="'.constant('URL').'" >PIP</a></div>

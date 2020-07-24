@@ -1,4 +1,4 @@
-<?php $title = "Lenguajes | Proyectos summary"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Lenguajes | Registro tiempos"; include_once "views/head.php"; include_once "views/header.php"?>
 
 
 <section class="section">

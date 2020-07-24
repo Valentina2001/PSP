@@ -178,7 +178,7 @@
         $this->view->redirect('gestionProyecto/tiempos');
 
       }else if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
-        $this->summary();
+        $this->tiempos();
         echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
 
       }else{
@@ -217,6 +217,100 @@
       $this->view->redirect('gestionProyecto/summary');
 
     }
+
+
+    function errores(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+
+      $this->loadModel('faseModel');
+      $this->view->fases = $this->model->getListado();
+
+      $this->loadModel('erroresProyectoModel');
+      $this->view->erroresEstandar = $this->model->erroresEstandar();
+
+      $this->view->data = $this->model->getListadoErrores($idProyectoUsuario);
+      $this->view->render('gestionProyecto/errores');
+    }
+
+
+    function erroresRegistro(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =   $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+      $data = [
+        'id' => getdate()[0],
+        'tiempoTotal' => (isset($_POST['tiempoTotal'])) ? $_POST['tiempoTotal'] : '',
+        'faseIn' => (isset($_POST['faseIn'])) ? $_POST['faseIn'] : '',
+        'faseOut' => (isset($_POST['faseOut'])) ? $_POST['faseOut'] : '',
+        'tipoError' => (isset($_POST['tipoError'])) ? $_POST['tipoError'] : '',
+        'fechaIn' => (isset($_POST['fechaIn'])) ? $_POST['fechaIn'] : '',
+        'horaIn' => (isset($_POST['horaIn'])) ? $_POST['horaIn'] : '',
+        'fechaOut' => (isset($_POST['fechaOut'])) ? $_POST['fechaOut'] : '',
+        'horaOut' => (isset($_POST['horaOut'])) ? $_POST['horaOut'] : '',
+        'comentarioError' => (isset($_POST['comentarioError'])) ? $_POST['comentarioError'] : '',
+        'solucionError' => (isset($_POST['solucionError'])) ? $_POST['solucionError'] : '',
+        'ldc' => (isset($_POST['ldc'])) ? $_POST['ldc'] : '',
+        'idpu' => $idProyectoUsuario,
+      ];
+
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/errores');
+          die;
+        }
+      }
+
+      if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
+        $this->errores();
+        echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
+
+      }else{
+        $this->loadModel('ErroresProyectoModel');
+        $this->model->insertError($data);
+        $this->errores();
+        echo "<script>swal('PSP', 'El registro de error se guardo correctamente', 'success')</script>";
+      }
+    }
+
+    function erroresActualizar(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =   $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+      $data = [
+        'id' => (isset($_POST['id'])) ? $_POST['id'] : '',
+        'descripcionError' => (isset($_POST['descripcionError'])) ? $_POST['descripcionError'] : '',
+        'descripcionSolucion' => (isset($_POST['descripcionSolucion'])) ? $_POST['descripcionSolucion'] : '',
+      ];
+
+      if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
+        $this->errores();
+        echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
+
+      }else if($data['descripcionError'] == '' || $data['descripcionSolucion'] == ''){
+        $this->errores();
+        echo "<script>swal('PSP', 'La descripción no puede quedar vacia', 'warning')</script>";
+        die;
+      }else{
+        $this->loadModel('ErroresProyectoModel');
+        $this->model->actualizar($data);
+
+        $this->errores();
+        echo "<script>swal('PSP', 'Se actualizo correctametne', 'success')</script>";
+      }
+    }
+
+
+    function tipoErrores(){
+      $this->loadModel('erroresProyectoModel');
+      $this->view->data = $this->model->tipoErrores();
+
+      $this->view->render('gestionProyecto/tipoErrores');
+    }
+
 
   }
 ?>
