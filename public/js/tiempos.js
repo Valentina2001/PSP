@@ -11,7 +11,7 @@ $('.visualizar-modal').on('click', function(e){
   $('#mInterrupciones').val($(this).parent().parent().children('#interrupciones').html())
   $('#mTiempo').val(tiempo)
   $('#MTMuerto').val(tMuerto)
-  $('#mTiempoTotal').val(tTotal)
+  $('#mTiempoTotal').val(tTotal.toFixed(2))
   $('#mComentarios').val($(this).parent().parent().children('#comentarios').html())
 
 })
@@ -55,6 +55,7 @@ reset.addEventListener('click', function(){
 })
 reset2.addEventListener('click', function(){
   resetearContador()
+  iniciar.innerHTML = "Iniciar"
   contentTiempoInput.classList.add('d-none')
   contentTiempoHtml.classList.add('d-flex')
   contentTiempoHtml.classList.remove('d-none')
@@ -113,6 +114,8 @@ function resetearContador(){
 
   document.getElementById('fechaIn').value = '0000-00-00'
   document.getElementById('horaIn').value = ''
+  document.getElementById('ctaGuardar').setAttribute('disabled', '');
+
   primerizo = true
 
   temporizador.innerHTML = tiempo +'.00'
@@ -147,6 +150,8 @@ function guardarContador(){
   }else{
     dia = fecha.getDate()
   }
+
+  document.getElementById('ctaGuardar').removeAttribute('disabled');
   document.getElementById('fechaOut').value = fecha.getFullYear() + '-' + mes  + '-' + dia
   document.getElementById('horaOut').value = fecha.getHours() + ':' + fecha.getMinutes()
   document.getElementById('interruptor').value = interrupciones

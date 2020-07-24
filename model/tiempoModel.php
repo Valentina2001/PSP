@@ -5,8 +5,8 @@
     }
 
     function insert($data){
-      $query = $this->db->connect()->prepare("INSERT INTO tiempos(idTiempo, fechaInicio, horaInicio, fechaFin, horaFin, interrupciones, totalTiempo, comentarios, idFase, tiempoMuerto, idProyectoUsuario) values(:idTiempo, :fechaInicio, :horaInicio, :fechaFin, :horaFin, :interrupciones, :totalTiempo, :comentarios, :idFase, :tiempoMuerto, :idProyectoUsuario)");
 
+      $query = $this->db->connect()->prepare("INSERT INTO tiempos(idTiempo, fechaInicio, horaInicio, fechaFin, horaFin, interrupciones, totalTiempo, comentarios, idFase, tiempoMuerto, idProyectoUsuario) values(:idTiempo, :fechaInicio, :horaInicio, :fechaFin, :horaFin, :interrupciones, :totalTiempo, :comentarios, :idFase, :tiempoMuerto, :idProyectoUsuario)");
       $query->execute([
         'idTiempo' => $data['idTiempo'],
         'fechaInicio' => $data['fechaIn'],
@@ -34,15 +34,26 @@
           'fechaOut' => $row['fechaFin'],
           'horaOut' => $row['horaFin'],
           'interrupciones' => $row['interrupciones'],
-          'tiempoTotal' => $row['totalTiempo'],
+          'tiempoTotal' => round(($row['totalTiempo'] / 60), 2),
           'comentarios' => $row['comentarios'],
           'idFase' => $row['idFase'],
-          'tiempoMuerto' => $row['tiempoMuerto'],
+          'tiempoMuerto' => round(($row['tiempoMuerto'] / 60), 2),
           'idProyectoUsuario' => $row['idProyectoUsuario'],
         ];
         array_push($data, $item);
       }
-      return $data;
+      return  $data;
+    }
+
+
+    function sumatoria($id, $fase){
+      $query = $this->db->connect()->prepare("SELECT SUM(totalTiempo) AS suma from tiempos where idProyectoUsuario = :id and idFase = :fase");
+      $query->execute([
+        'id' => $id,
+        'fase' => $fase
+      ]);
+      $numero = round(($query->fetch()['suma'] / 60 ),2);
+      return ($numero == 0) ? '0.00' : $numero;
     }
   }
 ?>

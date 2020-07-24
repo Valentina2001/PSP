@@ -54,7 +54,7 @@
 
                   </select>
                 </div>
-                <div class="form-row">
+                <div class="form-row d-none">
                   <div class="form-group col-12 col-sm-6">
                     <label for="fechaIn">Fecha Inicio</label>
                     <input type="date" name="fechaIn" class="form-control" id="fechaIn">
@@ -64,7 +64,7 @@
                     <input type="time" name="horaIn" class="form-control" id="horaIn">
                   </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row d-none">
                   <div class="form-group col-12 col-sm-6">
                     <label for="fechaOut">Fecha Fin</label>
                     <input type="date" name="fechaOut" class="form-control" id="fechaOut">
@@ -74,15 +74,15 @@
                     <input type="time" name="horaOut" class="form-control" id="horaOut">
                   </div>
                 </div>
+
                 <div class="form-group">
-                  Comentarios
-                  <textarea name="comentarios" rows="8" cols="80" class="form-control"></textarea>
+                  <textarea name="comentarios" rows="8" cols="80" class="form-control" placeholder="Comentarios sobre el registro de tiempo"></textarea>
                 </div>
                 <div class="form-group">
                   <button type="reset" id="resetear2" class="btn btn-outline-danger">cancelar</button>
-                  <button type="submit" class="btn btn-success">guardar</button>
+                  <button type="submit" class="btn btn-success" id="ctaGuardar" disabled>guardar</button>
                 </div>
-              </div>
+               </div>
             </form>
           </div>
           <div class="col-12 col-lg-8 p-0">
@@ -93,7 +93,6 @@
                       <th scope="col">Fase</th>
                       <th scope="col">Momento In.</th>
                       <th scope="col">Momento Fin</th>
-                      <th scope="col">Int.</th>
                       <th scope="col">T. Total</th>
                       <th scope="col">T. Muerto</th>
                       <th scope="col" colspan="2">Acciones</th>
@@ -110,7 +109,7 @@
                         }
                         echo "<td id='momentoIn'>".$row['fechaIn']." ".$row['horaIn']."</td>";
                         echo "<td id='momentoOut'>".$row['fechaOut']." ".$row['horaOut']."</td>";
-                        echo "<td id='interrupciones'>".$row['interrupciones']."</td>";
+                        echo "<td id='interrupciones' class='d-none'>".$row['interrupciones']."</td>";
                         echo "<td id='tiempo'>".$row['tiempoTotal']."</td>";
                         echo "<td id='tMuerto'>".$row['tiempoMuerto']."</td>";
 
@@ -120,9 +119,9 @@
                     ?>
                   </tbody>
                 </table>
-                <div class="float-right">
-                  Total: <?php echo count($this->data) ?>
-                </div>
+              </div>
+              <div class="float-right">
+                Total: <?php echo count($this->data) ?>
               </div>
             </div>
         </div>
