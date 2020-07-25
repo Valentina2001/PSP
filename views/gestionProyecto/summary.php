@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="content__info mt-4">
+      <div class="mt-4">
         <h3><b>Tiempo en fase</b></h3>
         <form class="table" method="post" action="<?php echo constant('URL') ?>gestionProyecto/planTiempo">
             <table class="table table-sm table-bordered ">
@@ -161,9 +161,270 @@
                   }
                 ?>
               </div>
-            </div>
+        </form>
+        <br>
+        <h3><b>Defectos inyetados en fase</b></h3>
+        <form class="table" method="post" action="<?php echo constant('URL') ?>gestionProyecto/planDefectos">
+            <table class="table table-sm table-bordered ">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">Fase</th>
+                    <th scope="col">Plan</th>
+                    <th scope="col">Actual</th>
+                    <th scope="col">Actual %</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr>
+                    <th class="text-left">Planeación</th>
+                    <?php
+                      if($this->planDefectos['planeacion'] != -1){
+                        echo '<td>'. $this->planDefectos['planeacion'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="planeacion" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['planeacion']; ?></td>
+                    <td><?php echo $this->porcDefectos['planeacion']; ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Diseño</th>
+                    <?php
+                      if($this->planDefectos['design'] != -1){
+                        echo '<td>'. $this->planDefectos['design'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="design" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['desing'] ?></td>
+                    <td><?php echo $this->porcDefectos['desing'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Código</th>
+                    <?php
+                      if($this->planDefectos['codigo'] != -1){
+                        echo '<td>'. $this->planDefectos['codigo'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="codigo" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['codigo'] ?></td>
+                    <td><?php echo $this->porcDefectos['codigo'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Compilar</th>
+                    <?php
+                      if($this->planDefectos['compilacion'] != -1){
+                        echo '<td>'. $this->planDefectos['compilacion'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="compilar" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['compilar'] ?></td>
+                    <td><?php echo $this->porcDefectos['compilar'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Pruebas Unitarias</th>
+                    <?php
+                      if($this->planDefectos['pu'] != -1){
+                        echo '<td>'. $this->planDefectos['pu'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="ut" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+
+                    <td><?php echo $this->tablaDefectos['pu'] ?></td>
+                    <td><?php echo $this->porcDefectos['pu'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Post Mortem</th>
+                    <?php
+                      if($this->planDefectos['pm'] != -1){
+                        echo '<td>'. $this->planDefectos['pm'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="pm" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['pm'] ?></td>
+                    <td><?php echo $this->porcDefectos['pm'] ?> %</td>
+                  </tr>
+                  <tr>
+                    <th class="text-left">Total</th>
+                    <td>
+                      <?php
+                        $suma = 0;
+                        foreach ($this->planDefectos as $value) {
+                          if($value != -1){
+                            $suma += $value;
+                          }
+                        }
+                        echo $suma;
+                      ?>
+                    </td>
+                    <td>
+                      <?php
+                        $suma = 0;
+                        foreach ($this->tablaDefectos as $value) {
+                          $suma += $value;
+                        }
+                        echo $suma;
+                      ?>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <div class="float-right">
+                <?php
+                  if($this->planDefectos['design'] == -1){
+                    echo '
+                      <div class="form-group">
+                      <button type="sumbit" class="btn btn-success">Guardar</button>
+                      </div>
+                    ';
+                  }
+                ?>
+              </div>
+        </form>
+        <br>
+        <h3><b>Defectos removidos en fase</b></h3>
+        <form class="table" method="post" action="<?php echo constant('URL') ?>gestionProyecto/planDefectosRemovidos">
+            <table class="table table-sm table-bordered ">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">Fase</th>
+                    <th scope="col">Plan</th>
+                    <th scope="col">Actual</th>
+                    <th scope="col">Actual %</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr>
+                    <th class="text-left">Planeación</th>
+                    <?php
+                      if($this->planDefecEliminados['planeacion'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['planeacion'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="planeacion" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['planeacion']; ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['planeacion']; ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Diseño</th>
+                    <?php
+                      if($this->planDefecEliminados['design'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['design'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="design" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['desing'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['desing'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Código</th>
+                    <?php
+                      if($this->planDefecEliminados['codigo'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['codigo'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="codigo" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['codigo'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['codigo'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Compilar</th>
+                    <?php
+                      if($this->planDefecEliminados['compilacion'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['compilacion'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="compilar" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['compilar'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['compilar'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Pruebas Unitarias</th>
+                    <?php
+                      if($this->planDefecEliminados['pu'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['pu'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="ut" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['pu'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['pu'] ?> %</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Post Mortem</th>
+                    <?php
+                      if($this->planDefecEliminados['pm'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['pm'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="pm" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['pm'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['pm'] ?> %</td>
+                  </tr>
+                  <tr>
+                    <th class="text-left">Total</th>
+                    <td>
+                      <?php
+                        $suma = 0;
+                        foreach ($this->planDefecEliminados as $value) {
+                          if($value != -1){
+                            $suma += $value;
+                          }
+                        }
+                        echo $suma;
+                      ?>
+                    </td>
+                    <td>
+                      <?php
+                        $suma = 0;
+                        foreach ($this->tablaDefecEliminados as $value) {
+                          $suma += $value;
+                        }
+                        echo $suma;
+                      ?>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <div class="float-right">
+                <?php
+                  if($this->planDefecEliminados['design'] == -1){
+                    echo '
+                      <div class="form-group">
+                      <button type="sumbit" class="btn btn-success">Guardar</button>
+                      </div>
+                    ';
+                  }
+                ?>
+              </div>
         </form>
       </div>
+    </div>
 </section>
 <?php  include_once "views/modalCambioPassword.php"; ?>
 <?php  include_once "views/footer.php";?>

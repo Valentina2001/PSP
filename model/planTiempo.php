@@ -19,10 +19,6 @@
       ]);
     }
 
-    function valid(){
-
-    }
-
     function get($id){
       $query = $this->db->connect()->query("SELECT * from planTiempo where idProyectoUsuario = $id");
       return $query->fetch();

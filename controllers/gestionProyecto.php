@@ -91,6 +91,9 @@
       $this->loadModel('gestionProyetoModel');
       $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
 
+
+      // tiempo
+
       $this->loadModel('planTiempo');
       $this->view->planTiempos = [
         'planeacion' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['planeacion'] : -1,
@@ -119,8 +122,68 @@
         'pu' => 5,
         'pm' => 5,
       ];
-      $this->view->render('gestionProyecto/summary');
 
+
+      // defectos inyectados
+      $this->loadModel('PlanDefectos');
+      $this->view->planDefectos = [
+        'planeacion' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['planeacion'] : -1,
+        'design' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['design'] : -1,
+        'codigo' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['codigo'] : -1,
+        'compilacion' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['compilacion'] : -1,
+        'pu' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['pruebasUnitarias'] : -1,
+        'pm' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['postMortem'] : -1,
+      ];
+
+      $this->loadModel('erroresProyectoModel');
+      $this->view->tablaDefectos = [
+        'planeacion' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase01'),
+        'desing' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase02'),
+        'codigo' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase04'),
+        'compilar' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase06'),
+        'pu' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase07'),
+        'pm' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase08'),
+      ];
+
+      $this->view->porcDefectos = [
+        'planeacion' => 1,
+        'desing' => 15,
+        'codigo' => 50,
+        'compilar' => 5,
+        'pu' => 5,
+        'pm' => 5,
+      ];
+
+      // defectos inyectados
+      $this->loadModel('PlanDefectos');
+      $this->view->planDefecEliminados = [
+        'planeacion' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['planeacion'] : -1,
+        'design' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['design'] : -1,
+        'codigo' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['codigo'] : -1,
+        'compilacion' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['compilacion'] : -1,
+        'pu' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['pruebasUnitarias'] : -1,
+        'pm' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['postMortem'] : -1,
+      ];
+
+      $this->loadModel('erroresProyectoModel');
+      $this->view->tablaDefecEliminados = [
+        'planeacion' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase01'),
+        'desing' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase02'),
+        'codigo' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase04'),
+        'compilar' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase06'),
+        'pu' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase07'),
+        'pm' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase08'),
+      ];
+      $this->view->porcDefectosEliminados = [
+        'planeacion' => 99,
+        'desing' => 150,
+        'codigo' => 504,
+        'compilar' => 5,
+        'pu' => 5,
+        'pm' => 54,
+      ];
+
+      $this->view->render('gestionProyecto/summary');
 
     }
 
@@ -146,10 +209,6 @@
         die;
       }
 
-
-
-
-
       $this->view->render('gestionProyecto/tiempos');
     }
 
@@ -172,6 +231,7 @@
         'interrupciones' => (isset($_POST['interrupciones'])) ? $_POST['interrupciones'] : '',
       ];
       $idProyecto =   $this->view->sesion->getSesion('proyecto')['idProyecto'];
+
       $this->loadModel('gestionProyetoModel');
 
       if($data['tiempoTotal'] == '' or $data['tiempoMuerto'] == ''){
@@ -180,15 +240,20 @@
       }else if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
         $this->tiempos();
         echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
-
+        die;
       }else{
+        $this->loadModel('planTiempo');
+
+        if($this->model->get($resultValid['idProyectoUsuario']) == false){
+          $this->tiempos();
+          echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'warning')</script>";
+          die;
+        }
         $this->loadModel('tiempoModel');
         $this->model->insert($data);
         $this->tiempos();
         echo "<script>swal('PSP', 'El registro de tiempo se guardo satisfactoriamente', 'success')</script>";
       }
-
-
     }
 
     function planTiempo(){
@@ -206,23 +271,80 @@
         'idpu' => $idProyectoUsuario,
       ];
 
-      if($data['planeacion'] == '' || $data['design'] == '' || $data['codigo'] == '' || $data['compilar'] =='' || $data['ut'] == '' || $data['pm'] == '' ){
-        $this->view->redirect('gestionProyecto/summary');
-        die;
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/summary');
+          die;
+        }
       }
       // var_dump($data);
       $this->loadModel('planTiempo');
       $this->model->insert($data);
 
       $this->view->redirect('gestionProyecto/summary');
+    }
 
+    function planDefectosRemovidos(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+      $data = [
+        'id' => getdate()[0],
+        'planeacion' => (isset($_POST['planeacion'])) ? $_POST['planeacion'] : '',
+        'design' => (isset($_POST['design'])) ? $_POST['design'] : '',
+        'codigo' => (isset($_POST['codigo'])) ? $_POST['codigo'] : '',
+        'compilar' => (isset($_POST['compilar'])) ? $_POST['compilar'] : '',
+        'ut' => (isset($_POST['ut'])) ? $_POST['ut'] : '',
+        'pm' => (isset($_POST['pm'])) ? $_POST['pm'] : '',
+        'idpu' => $idProyectoUsuario,
+      ];
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/summary');
+          die;
+        }
+      }
+      // var_dump($data);
+      $this->loadModel('planDefectos');
+      $this->model->insertRemovidos($data);
+      $this->view->redirect('gestionProyecto/summary');
+    }
+    function planDefectos(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+      $data = [
+        'id' => getdate()[0],
+        'planeacion' => (isset($_POST['planeacion'])) ? $_POST['planeacion'] : '',
+        'design' => (isset($_POST['design'])) ? $_POST['design'] : '',
+        'codigo' => (isset($_POST['codigo'])) ? $_POST['codigo'] : '',
+        'compilar' => (isset($_POST['compilar'])) ? $_POST['compilar'] : '',
+        'ut' => (isset($_POST['ut'])) ? $_POST['ut'] : '',
+        'pm' => (isset($_POST['pm'])) ? $_POST['pm'] : '',
+        'idpu' => $idProyectoUsuario,
+      ];
+
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/summary');
+          die;
+        }
+      }
+      // var_dump($data);
+      $this->loadModel('planDefectos');
+      $this->model->insertInyectados($data);
+
+      $this->view->redirect('gestionProyecto/summary');
     }
 
 
     function errores(){
+      if($this->view->sesion->getSesion('proyecto') == -1){
+        $this->view->redirect('');
+      }
+
       $this->loadModel('gestionProyetoModel');
       $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
-
 
       $this->loadModel('faseModel');
       $this->view->fases = $this->model->getListado();
@@ -231,14 +353,42 @@
       $this->view->erroresEstandar = $this->model->erroresEstandar();
 
       $this->view->data = $this->model->getListadoErrores($idProyectoUsuario);
+
+      $this->loadModel('gestionProyetoModel');
+      $resultValid = $this->model->validarAsociado($this->cedula, $this->view->sesion->getSesion('proyecto')['idProyecto']);
+
       $this->view->render('gestionProyecto/errores');
+      $this->loadModel('planDefectos');
+      if($this->model->getInyectados($resultValid['idProyectoUsuario']) == false){
+        echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'info')</script>";
+      }else if($this->model->getRemovidos($resultValid['idProyectoUsuario']) == false){
+        echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'info')</script>";
+      }
+
     }
 
 
     function erroresRegistro(){
+      if($this->view->sesion->getSesion('proyecto') == -1){
+        $this->view->redirect('');
+      }
       $this->loadModel('gestionProyetoModel');
       $idProyecto =   $this->view->sesion->getSesion('proyecto')['idProyecto'];
       $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+      $resultValid = $this->model->validarAsociado($this->cedula, $this->view->sesion->getSesion('proyecto')['idProyecto']);
+
+      $this->loadModel('planDefectos');
+      if($this->model->getInyectados($resultValid['idProyectoUsuario']) == false){
+        $this->errores();
+        echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'info')</script>";
+        die;
+      }else if($this->model->getRemovidos($resultValid['idProyectoUsuario']) == false){
+        $this->errores();
+        echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'info')</script>";
+        die;
+      }
+
+
 
       $data = [
         'id' => getdate()[0],
@@ -262,6 +412,7 @@
           die;
         }
       }
+      $this->loadModel('gestionProyetoModel');
 
       if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
         $this->errores();
@@ -274,6 +425,7 @@
         echo "<script>swal('PSP', 'El registro de error se guardo correctamente', 'success')</script>";
       }
     }
+
 
     function erroresActualizar(){
       $this->loadModel('gestionProyetoModel');
@@ -310,6 +462,7 @@
 
       $this->view->render('gestionProyecto/tipoErrores');
     }
+
 
 
   }

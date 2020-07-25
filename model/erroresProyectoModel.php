@@ -99,6 +99,16 @@
       return $data;
     }
 
+    function sumatoriaDefectos($id, $fase){
+      $query = $this->db->connect()->query("SELECT count(*) as total from deteccionerrores where idProyectoUsuario = '$id' and 	faseCreacionError = '$fase'");
+      return $query->fetch()['total'];
+    }
+
+    function sumatoriaDefectosRemovidos($id, $fase){
+      $query = $this->db->connect()->query("SELECT count(*) as total from deteccionerrores where idProyectoUsuario = '$id' and 	faseEliminacionError = '$fase'");
+      return $query->fetch()['total'];
+    }
+
   }
 
 ?>
