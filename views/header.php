@@ -16,7 +16,7 @@
         <ul>
           <li><a href="<?php echo constant('URL') . "programador/formulario/".$sesionData[3] ?>"><i class="btn-icon fas fa-user-edit"></i>Editar Información</a></li>
           <li><a href=""  data-toggle="modal" data-target="#cambioUsuario"><i class="btn-icon fas fa-eye"></i>Cambiar contraseña</a></li>
-          <li><a href="<?php echo constant('URL') ?>login/cerrarSesion"><i class="btn-icon fas fa-times-circle"></i>Cerrar sesion</a></li>
+          <li><a href="<?php echo constant('URL') ?>login/cerrarSesion"><i class="btn-icon fas fa-times-circle"></i>Cerrar sesión</a></li>
         </ul>
         <li class="switch" >
           <a href="#">

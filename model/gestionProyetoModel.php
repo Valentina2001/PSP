@@ -99,15 +99,18 @@
     }
 
     function desasociar($cedula, $codigo){
-        $query = $this->db->connect()->prepare('delete from proyectosusuarios where idProyectoUsuario = :id');
-        if($this->validarAsociado($cedula, $codigo) != null){
-        $query->execute([
-          'id' => $this->validarAsociado($cedula, $codigo)['idProyectoUsuario']
-        ]);
-        return true;
-      }
+        $aux = $this->validarAsociado($cedula, $codigo)['idProyectoUsuario'];
 
-      return false;
+        $this->db->connect()->query("delete from deteccionerrores where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from pip where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from plandefectosinyectados where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from plantiempo where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from reportes where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from tiempos where idProyectoUsuario = $aux");
+        $this->db->connect()->query("delete from plandefectosremovidos where idProyectoUsuario = $aux");
+
+        $this->db->connect()->query("delete from proyectosusuarios where idProyectoUsuario = $aux");
+        return true;
     }
 
     function terminar($cedula, $codigo){

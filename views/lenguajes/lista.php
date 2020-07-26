@@ -1,4 +1,4 @@
-<?php $title = "Lenguajes | Listado"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Lenguajes | Listado lenguajes"; include_once "views/head.php"; include_once "views/header.php"?>
 
 <section class="section">
     <div class="content py-3 px-4">

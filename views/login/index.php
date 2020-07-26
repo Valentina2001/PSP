@@ -30,7 +30,6 @@
               <a href="<?php echo constant('URL') ?>login/registrar" class="btn btn-outline-info">Registrate</a>
               <button type="submit" class="btn btn-success">Ingresar</button>
             </div>
-            <a href="#">¿Olvidaste tu contraseña?</a>
           </form>
         </div>
       </div>
