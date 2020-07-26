@@ -470,7 +470,6 @@
       }
     }
 
-
     function tipoErrores(){
       $this->loadModel('erroresProyectoModel');
       $this->view->data = $this->model->tipoErrores();
@@ -478,7 +477,69 @@
       $this->view->render('gestionProyecto/tipoErrores');
     }
 
+    function pip(){
+      if($this->view->sesion->getSesion('proyecto') == -1){
+        $this->view->redirect('');
+      }else if($this->view->sesion->getSesion('proyecto')['proceso'] == 'psp0'){
+        $this->view->redirect('gestionProyecto/summary');
+      }
 
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =  $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $idProyecto)['idProyectoUsuario'];
 
+      $this->loadModel('pipModel');
+      $this->view->data = $this->model->listado($idProyectoUsuario);
+
+      $this->view->render('gestionProyecto/pip');
+
+    }
+
+    function pipRegistro(){
+
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =  $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $idProyecto)['idProyectoUsuario'];
+
+      $data = [
+        'idPip' => getdate()[0],
+        'problema' => (isset($_POST['problema'])) ? $_POST['problema'] : '',
+        'propuesta' => (isset($_POST['propuesta'])) ? $_POST['propuesta'] : '',
+        'comentarios' => (isset($_POST['comentarios'])) ? $_POST['comentarios'] : '',
+        'idpu' => $idProyectoUsuario,
+      ];
+
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/pip');
+        }
+      }
+
+      $this->loadModel('pipModel');
+      $this->model->insert($data);
+
+      $this->pip();
+      echo "<script>swal('PSP', 'El registro del PIP fue exitoso', 'success')</script>";
+    }
+
+    function pipActualizar(){
+      $data = [
+        'idPip' => (isset($_POST['id'])) ? $_POST['id'] : '',
+        'problema' => (isset($_POST['problema'])) ? $_POST['problema'] : '',
+        'propuesta' => (isset($_POST['propuesta'])) ? $_POST['propuesta'] : '',
+        'comentarios' => (isset($_POST['comentario'])) ? $_POST['comentario'] : '',
+      ];
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/pip');
+        }
+      }
+
+      $this->loadModel('pipModel');
+      $this->model->set($data);
+
+      $this->pip();
+      echo "<script>swal('PSP', 'Se actualizo correctamente', 'success')</script>";
+    }
   }
 ?>
