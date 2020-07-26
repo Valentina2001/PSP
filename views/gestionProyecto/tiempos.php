@@ -141,43 +141,43 @@
             </div>
             <div class="modal-body">
                 <form class="form ">
-                        <div class="form-group col-12 col-sm-12 p-0 m-0 mb-2">
-                          Fase
-                          <input type="text" disabled placeholder="Fase" class="form-control" id="mFase">
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-12  col-sm-6">
-                            Tiempo Trabajado
-                            <input type="text" disabled placeholder="Tiempo trabajado" class="form-control " id="mTiempo">
-                          </div>
-                          <div class="form-group col-12  col-sm-6">
-                            Tiempo total
-                            <input type="text" disabled placeholder="Tiempo Total" class="form-control " id="mTiempoTotal">
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-12  col-sm-6">
-                            Momento inicial
-                            <input type="text" disabled placeholder="Momento inicial" class="form-control" id="mMomentoIn">
-                          </div>
-                          <div class="form-group col-12  col-sm-6">
-                            Momento final
-                            <input type="text" disabled id="mMomentoOut" placeholder="Momento final" class="form-control " >
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-12  col-sm-6">
-                            Interrupciones
-                            <input type="text" disabled id="mInterrupciones" placeholder="Interrupciones" class="form-control" >
-                          </div>
-                          <div class="form-group col-12  col-sm-6">
-                            Tiempo muerto
-                            <input type="text" disabled placeholder="Tiempo muerto" class="form-control " id="MTMuerto">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <textarea rows="4" cols="80" id="mComentarios" placeholder="Descripcion" class="form-control" disabled></textarea>
-                        </div>
+                  <div class="form-group col-12 col-sm-12 p-0 m-0 mb-2">
+                    Fase
+                    <input type="text" disabled placeholder="Fase" class="form-control" id="mFase">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12  col-sm-6">
+                      Tiempo Trabajado
+                      <input type="text" disabled placeholder="Tiempo trabajado" class="form-control " id="mTiempoModal" value="1">
+                    </div>
+                    <div class="form-group col-12  col-sm-6">
+                      Tiempo total
+                      <input type="text" disabled placeholder="Tiempo Total" class="form-control " id="mTiempoTotal">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12  col-sm-6">
+                      Momento inicial
+                      <input type="text" disabled placeholder="Momento inicial" class="form-control" id="mMomentoIn">
+                    </div>
+                    <div class="form-group col-12  col-sm-6">
+                      Momento final
+                      <input type="text" disabled id="mMomentoOut" placeholder="Momento final" class="form-control " >
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12  col-sm-6">
+                      Interrupciones
+                      <input type="text" disabled id="mInterrupciones" placeholder="Interrupciones" class="form-control" >
+                    </div>
+                    <div class="form-group col-12  col-sm-6">
+                      Tiempo muerto
+                      <input type="text" disabled placeholder="Tiempo muerto" class="form-control " id="MTMuerto">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <textarea rows="4" cols="80" id="mComentarios" placeholder="Descripcion" class="form-control" disabled></textarea>
+                  </div>
                 </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>

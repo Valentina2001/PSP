@@ -166,7 +166,12 @@
                         echo "<td id='faseOut' class='d-none'>".$row['faseOut']."</td>";
                         echo "<td id='descError' class='d-none'>".$row['descripcionError']."</td>";
                         echo "<td id='descSoluc' class='d-none'>".$row['descripcionSolucion']."</td>";
-                        echo "<td id='errorTipo'>".$row['idErrorTipo']."</td>";
+                        $option = $this->erroresEstandar;
+                        foreach ($option as $error) {
+                          if($error['id'] == $row['idErrorTipo']){
+                            echo "<td id='errorTipo'>".$error['nombre']."</td>";
+                          }
+                        }
                         echo "<td id='ldc'>".$row['reparacionLDC']."</td>";
                         echo "<td class='text-center'><a href='#' class='btn btn-outline-primary fas fa-info visualizar-modal' data-toggle='modal' data-target='#detallesErrores'></a> </td></tr>";
                       }

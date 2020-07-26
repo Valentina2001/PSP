@@ -1,21 +1,17 @@
-
-
 $('.visualizar-modal').on('click', function(e){
-  tiempo = parseFloat($(this).parent().parent().children('#tiempo').html())
+  tiempoInput = parseFloat($(this).parent().parent().children('#tiempo').html())
   tMuerto = parseFloat($(this).parent().parent().children('#tMuerto').html())
-  tTotal = tiempo + tMuerto
+  tTotal = tiempoInput + tMuerto
 
   $('#mFase').val($(this).parent().parent().children('#fase').html())
   $('#mMomentoIn').val($(this).parent().parent().children('#momentoIn').html())
   $('#mMomentoOut').val($(this).parent().parent().children('#momentoOut').html())
   $('#mInterrupciones').val($(this).parent().parent().children('#interrupciones').html())
-  $('#mTiempo').val(tiempo)
+  $('#mTiempoModal').val(tiempoInput)
   $('#MTMuerto').val(tMuerto)
   $('#mTiempoTotal').val(tTotal.toFixed(2))
   $('#mComentarios').val($(this).parent().parent().children('#comentarios').html())
-
 })
-
 
 temporizador = document.getElementById('temporizador')
 iniciar = document.getElementById('iniciar')
@@ -78,7 +74,12 @@ function iniciarContador(){
       dia = fecha.getDate()
     }
     document.getElementById('fechaIn').value = fecha.getFullYear() + '-' + mes  + '-' + dia
-    document.getElementById('horaIn').value = fecha.getHours() + ':' + fecha.getMinutes()
+
+    if(fecha.getMinutes() < 10){
+      document.getElementById('horaIn').value = fecha.getHours() + ':' + '0' + fecha.getMinutes()
+    }else{
+      document.getElementById('horaIn').value = fecha.getHours() + ':' + fecha.getMinutes()
+    }
     primerizo = false
   }
 
@@ -153,6 +154,10 @@ function guardarContador(){
 
   document.getElementById('ctaGuardar').removeAttribute('disabled');
   document.getElementById('fechaOut').value = fecha.getFullYear() + '-' + mes  + '-' + dia
-  document.getElementById('horaOut').value = fecha.getHours() + ':' + fecha.getMinutes()
+  if(fecha.getMinutes() < 10){
+    document.getElementById('horaOut').value = fecha.getHours() + ':' + '0' + fecha.getMinutes()
+  }else{
+    document.getElementById('horaOut').value = fecha.getHours() + ':' + fecha.getMinutes()
+  }
   document.getElementById('interruptor').value = interrupciones
 }

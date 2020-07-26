@@ -113,14 +113,19 @@
         'pu' => $this->model->sumatoria($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoria($idProyectoUsuario, 'fase08'),
       ];
+      $totalMinutos = 0;
+      foreach ($this->view->tablaTiempos as $value) {
+        $totalMinutos += $value;
+      }
+
 
       $this->view->porcTiempos = [
-        'planeacion' => 1,
-        'desing' => 5,
-        'codigo' => 5,
-        'compilar' => 5,
-        'pu' => 5,
-        'pm' => 5,
+        'planeacion' =>  ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['planeacion'] * 100) / $totalMinutos, 2),
+        'desing' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['desing'] * 100) / $totalMinutos, 2),
+        'codigo' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['codigo'] * 100) / $totalMinutos, 2),
+        'compilar' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['compilar'] * 100) / $totalMinutos, 2),
+        'pu' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['pu'] * 100) / $totalMinutos, 2),
+        'pm' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['pm'] * 100) / $totalMinutos, 2),
       ];
 
 
@@ -144,14 +149,18 @@
         'pu' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase08'),
       ];
+      $totalRemovidos = 0;
+      foreach ($this->view->tablaDefectos as $value) {
+        $totalRemovidos += $value;
+      }
 
       $this->view->porcDefectos = [
-        'planeacion' => 1,
-        'desing' => 15,
-        'codigo' => 50,
-        'compilar' => 5,
-        'pu' => 5,
-        'pm' => 5,
+        'planeacion' =>   ($totalRemovidos == 0) ? 0 : round(($this->view->tablaDefectos['planeacion'] * 100) / $totalRemovidos, 2),
+        'desing' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['desing'] * 100) / $totalRemovidos, 2),
+        'codigo' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['codigo'] * 100) / $totalRemovidos, 2),
+        'compilar' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['compilar'] * 100) / $totalRemovidos, 2),
+        'pu' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['pu'] * 100) / $totalRemovidos, 2),
+        'pm' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['pm'] * 100) / $totalRemovidos, 2),
       ];
 
       // defectos inyectados
@@ -174,13 +183,19 @@
         'pu' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase08'),
       ];
+
+      $totalErrores = 0;
+      foreach ($this->view->tablaDefecEliminados as $value) {
+        $totalErrores += $value;
+      }
+
       $this->view->porcDefectosEliminados = [
-        'planeacion' => 99,
-        'desing' => 150,
-        'codigo' => 504,
-        'compilar' => 5,
-        'pu' => 5,
-        'pm' => 54,
+        'planeacion' =>  ($totalErrores == 0) ? 0 :  round(($this->view->tablaDefecEliminados['planeacion'] * 100) / $totalErrores, 2),
+        'desing' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['desing'] * 100) / $totalErrores, 2),
+        'codigo' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['codigo'] * 100) / $totalErrores, 2),
+        'compilar' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['compilar'] * 100) / $totalErrores, 2),
+        'pu' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pu'] * 100) / $totalErrores, 2),
+        'pm' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pm'] * 100) / $totalErrores, 2),
       ];
 
       $this->view->render('gestionProyecto/summary');
