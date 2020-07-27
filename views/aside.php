@@ -67,7 +67,7 @@
                             <div class="aside__link"><i class="aside__icon left  fas fa-exclamation-triangle"></i><a href="'.constant('URL').'gestionProyecto/pip" >PIP</a></div>
                         </li>
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-chart-bar"></i><a href="'.constant('URL').'" >Reportes</a></div>
+                            <div class="aside__link"><i class="aside__icon left  fas fa-chart-bar"></i><a href="'.constant('URL').'gestionProyecto/reportes" >Reportes</a></div>
                         </li>
                       ';
                       break;

@@ -122,8 +122,7 @@
 
       // var_dump($this->model->validar('cedulaUsuario', '246455489'));
       $this->model->nuevo($data);
-      $this->view->sesion->setSesion('usuario', [$data['nombre'], $data['email'], 'public/img/usuarios/user-default.png' , $data['cedula'] , 'programador' ]);
-      echo "<script>swal('PSP', 'Se guardo exitosamente', 'success') .then((value) => {location.href='".constant('URL')."programador/formulario/".$data['cedula']."'})</script>";
+      echo "<script>swal('PSP', 'Se guardo exitosamente', 'success') .then((value) => {location.href='".constant('URL')."'})</script>";
 
 
 

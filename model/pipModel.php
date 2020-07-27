@@ -44,6 +44,11 @@
         'comentarios' => $data['comentarios'],
       ]);
     }
+
+    function eliminar($id){
+      $this->db->connect()->query("DELETE FROM pip WHERE idPip = $id");
+    }
+
   }
 
 ?>

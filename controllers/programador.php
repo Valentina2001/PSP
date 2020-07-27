@@ -89,7 +89,7 @@
       $this->loadModel('usuariosModel');
       $this->model->aspirante($cedula);
 
-      $this->view->redirect('programador/aspirantes');
+      $this->view->redirect('programador/rechazados');
     }
 
     function delAspirante($cedula){

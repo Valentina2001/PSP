@@ -34,7 +34,7 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Fecha</th>
-                      <th scope="col">Acciones</th>
+                      <th scope="col" colspan="2">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -45,6 +45,7 @@
                         echo "<td id='descripcion' class='d-none'>".$row['descripcion']."</td>";
                         echo "<td id='solucion' class='d-none'>".$row['solucion']."</td>";
                         echo "<td id='comentarios' class='d-none'>".$row['comentarios']."</td>";
+                        echo "<td class='text-center'><a href='".constant('URL')."gestionProyecto/pipEliminar/".$row['idPip']."' class='btn btn-outline-danger fas fa-info far fa-trash-alt'></a> </td>";
                         echo "<td class='text-center'><a href='#' class='btn btn-outline-primary fas fa-info visualizar-modal' data-toggle='modal' data-target='#detallesTiempo'></a> </td></tr>";
                       }
                     ?>
@@ -95,7 +96,7 @@
                 </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-                <label for="ctaGuardar" class="btn btn-success">Guardar</label>
+                <label for="ctaGuardar" class="btn btn-success mt-2">Guardar</label>
             </div>
         </div>
     </div>

@@ -541,5 +541,103 @@
       $this->pip();
       echo "<script>swal('PSP', 'Se actualizo correctamente', 'success')</script>";
     }
+
+    function pipEliminar($id){
+      $this->loadModel('pipModel');
+      $this->model->eliminar($id[0]);
+
+      $this->pip();
+      echo "<script>swal('PSP', 'Se elimino correctamente', 'success')</script>";
+
+    }
+
+    function reportes(){
+      if($this->view->sesion->getSesion('proyecto') == -1){
+        $this->view->redirect('');
+      }else if($this->view->sesion->getSesion('proyecto')['proceso'] == 'psp0'){
+        $this->view->redirect('gestionProyecto/summary');
+      }
+
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =  $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $idProyecto)['idProyectoUsuario'];
+
+
+      $this->loadModel('reporteModel');
+      $this->view->data = $this->model->listado($idProyectoUsuario);
+
+      $this->view->render('gestionProyecto/reportes');
+    }
+
+
+    function reporteNuevo(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyecto =  $this->view->sesion->getSesion('proyecto')['idProyecto'];
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $idProyecto)['idProyectoUsuario'];
+
+
+      $data = [
+        'idpu' => $idProyectoUsuario,
+        'id' => getdate()[0],
+        'nombre' => (isset($_POST['nombre'])) ? $_POST['nombre'] : '',
+        'objetivo' => (isset($_POST['objetivo'])) ? $_POST['objetivo'] : '',
+        'condiciones' => (isset($_POST['condiciones'])) ? $_POST['condiciones'] : '',
+        'descripcion' => (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '',
+        'esperado' => (isset($_POST['esperado'])) ? $_POST['esperado'] : '',
+        'actual' => (isset($_POST['actual'])) ? $_POST['actual'] : '',
+      ];
+
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/reportes');
+          die;
+        }
+      }
+
+      $this->loadModel('reporteModel');
+      $this->model->insert($data);
+
+      $this->reportes();
+      echo "<script>swal('PSP', 'El reporte fue guardado cone exito', 'success')</script>";
+    }
+
+    function reportesEliminar($id = 'nada'){
+      if($id == 'nada'){
+        $this->view->redirect('gestionProyecto/reportes');
+      }
+
+      $this->loadModel('reporteModel');
+      $this->model->eliminar($id[0]);
+
+      $this->reportes();
+      echo "<script>swal('PSP', 'El reporte se elimino correctamente', 'success')</script>";
+    }
+
+
+    function reporteActualizar(){
+      $data = [
+        'id' => (isset($_POST['id'])) ? $_POST['id'] : '',
+        'nombre' => (isset($_POST['nombre'])) ? $_POST['nombre'] : '',
+        'objetivo' => (isset($_POST['objetivo'])) ? $_POST['objetivo'] : '',
+        'condiciones' => (isset($_POST['condiciones'])) ? $_POST['condiciones'] : '',
+        'descripcion' => (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '',
+        'esperado' => (isset($_POST['esperado'])) ? $_POST['esperado'] : '',
+        'actual' => (isset($_POST['actual'])) ? $_POST['actual'] : '',
+      ];
+
+      foreach ($data as $value) {
+        if($value == ''){
+          $this->view->redirect('gestionProyecto/reportes');
+          die;
+        }
+      }
+
+      $this->loadModel('reporteModel');
+      $this->model->actualizar($data);
+
+      $this->reportes();
+      echo "<script>swal('PSP', 'El reporte se actualizo correctamente', 'success')</script>";
+
+    }
   }
 ?>
