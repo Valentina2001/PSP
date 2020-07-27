@@ -98,8 +98,8 @@
                             <input type="text" disabled id="mMedida" placeholder="Medidas" class="form-control ml-2" >
                         </div>
                         <div class="input-group my-2">
-                            <input type="date" disabled placeholder="Fecha Ingreso" class="form-control mr-2" id="mFechaIn">
-                            <input type="date" disabled placeholder="fecha Finalización" class="form-control ml-2" id="mFechaOut">
+                            <input type="text" disabled placeholder="Fecha Ingreso" class="form-control mr-2" id="mFechaInProyecto">
+                            <input type="text" disabled placeholder="fecha Finalización" class="form-control ml-2" id="mFechaOutProyecto">
                         </div>
                         <textarea rows="8" cols="80" id="mDescripcion" placeholder="Descripcion" class="form-control" disabled></textarea>
                 </form>
