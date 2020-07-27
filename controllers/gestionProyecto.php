@@ -91,9 +91,9 @@
       $this->loadModel('gestionProyetoModel');
       $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
 
-
+      $this->loadModel('resumenProyecto');
+      $this->view->resumenProyecto = $this->model->get($idProyectoUsuario);
       // tiempo
-
       $this->loadModel('planTiempo');
       $this->view->planTiempos = [
         'planeacion' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['planeacion'] : -1,
@@ -199,6 +199,30 @@
       ];
 
       $this->view->render('gestionProyecto/summary');
+
+    }
+    function insertResumenProyecto(){
+      $this->loadModel('gestionProyetoModel');
+      $idProyectoUsuario = $this->model->validarAsociado($this->view->sesion->getSesion('usuario')[3], $this->view->sesion->getSesion('proyecto')['idProyecto'])['idProyectoUsuario'];
+
+
+      $data = [
+        'id' => (isset($_POST['idResumenProyecto'])) ? $_POST['idResumenProyecto'] : '',
+        'plan' => (isset($_POST['planResumenProyecto'])) ? $_POST['planResumenProyecto'] : '',
+        'actual' => (isset($_POST['actualResumenProyecto'])) ? $_POST['actualResumenProyecto'] : '',
+        'idpu' => $idProyectoUsuario,
+      ];
+      $this->loadModel('resumenProyecto');
+
+      if( $data['plan'] == '' || $data['actual'] == ''){
+        $this->view->redirect('gestionProyecto/summary');
+      }else if($data['id'] == ''){
+        $this->model->insert($data);
+      }else{
+        $this->model->actualizar($data);
+      }
+
+      $this->view->redirect('gestionProyecto/summary');
 
     }
 
@@ -554,7 +578,7 @@
     function reportes(){
       if($this->view->sesion->getSesion('proyecto') == -1){
         $this->view->redirect('');
-      }else if($this->view->sesion->getSesion('proyecto')['proceso'] == 'psp0'){
+      }else if($this->view->sesion->getSesion('proyecto')['proceso'] == 'psp0' || $this->view->sesion->getSesion('proyecto')['proceso']== 'psp01' ){
         $this->view->redirect('gestionProyecto/summary');
       }
 

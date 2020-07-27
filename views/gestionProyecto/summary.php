@@ -32,6 +32,39 @@
       </div>
 
       <div class="mt-4">
+        <?php
+          if($this->sesion->getSesion('proyecto')['proceso'] != 'psp0'){
+            echo '
+            <h3><b>Resumen tamaño proyecto</b></h3>
+            <form class="table" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">
+                <table class="table table-sm table-bordered ">
+                    <thead class="table-primary">
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Actual</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <th class="text-left">Tamaño</th>
+                        <td class="d-none"><input type="number" name="idResumenProyecto" value="'.$this->resumenProyecto['idResumenProyecto'] .'" class="form-control"> </td>
+                        <td  style="max-width: 150px;"><input type="number" name="planResumenProyecto" value="'.$this->resumenProyecto['plan'] .'" class="form-control" required> </td>
+                        <td  style="max-width: 150px;"><input type="number" name="actualResumenProyecto" value="'.$this->resumenProyecto['actual'] .'" class="form-control" required> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="float-right">
+                    <div class="float-right">
+                      <div class="form-group">
+                        <button type="sumbit" class="btn btn-success">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+            </form>
+            ';
+            }
+          ?>
         <h3><b>Tiempo en fase</b></h3>
         <form class="table" method="post" action="<?php echo constant('URL') ?>gestionProyecto/planTiempo">
             <table class="table table-sm table-bordered ">

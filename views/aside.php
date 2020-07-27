@@ -66,14 +66,34 @@
                         <li class="aside__item">
                             <div class="aside__link"><i class="aside__icon left  fas fa-exclamation-triangle"></i><a href="'.constant('URL').'gestionProyecto/pip" >PIP</a></div>
                         </li>
+                      ';
+                      break;
+
+                    case 'psp1':
+                      echo '
                         <li class="aside__item">
-                            <div class="aside__link"><i class="aside__icon left  fas fa-chart-bar"></i><a href="'.constant('URL').'gestionProyecto/reportes" >Reportes</a></div>
+                          <div class="aside__link"><i class="aside__icon left fas fa-file-invoice"></i><a href="'.constant('URL').'gestionProyecto/summary" >Summary</a></div>
+                        </li>
+                        <li class="aside__item">
+                            <div class="aside__link"><i class="aside__icon left  fas fa-stopwatch"></i><a href="'.constant('URL').'gestionProyecto/tiempos" >Tiempos</a></div>
+                        </li>
+                        <li class="aside__item">
+                            <div class="aside__link"><i class="aside__icon left  fas fa-bug"></i><a href="'.constant('URL').'gestionProyecto/errores">Errores</a></div>
+                        </li>
+                        <li class="aside__item">
+                            <div class="aside__link"><i class="aside__icon left  fas fa-viruses"></i><a href="'.constant('URL').'gestionProyecto/tipoErrores">Tipo errores</a></div>
+                        </li>
+                        <li class="aside__item">
+                            <div class="aside__link"><i class="aside__icon left  fas fa-exclamation-triangle"></i><a href="'.constant('URL').'gestionProyecto/pip" >PIP</a></div>
+                        </li>
+                        <li class="aside__item">
+                          <div class="aside__link"><i class="aside__icon left  fas fa-chart-bar"></i><a href="'.constant('URL').'gestionProyecto/reportes" >Reportes</a></div>
                         </li>
                       ';
                       break;
-                    default:
-                      // code...
-                      break;
+                    default :
+
+                    break;
                   }
 
                   echo '
