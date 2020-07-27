@@ -104,6 +104,10 @@
         'pm' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['postMortem'] : -1,
       ];
 
+      $totalPlanMinutos = 0;
+      foreach ($this->view->planTiempos as $value) {
+        $totalPlanMinutos += $value;
+      }
       $this->loadModel('tiempoModel');
       $this->view->tablaTiempos = [
         'planeacion' => $this->model->sumatoria($idProyectoUsuario, 'fase01'),
@@ -197,6 +201,9 @@
         'pu' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pu'] * 100) / $totalErrores, 2),
         'pm' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pm'] * 100) / $totalErrores, 2),
       ];
+
+      $this->view->planResumenProductividad = round((($totalPlanMinutos == 0 || $this->view->resumenProyecto['plan'] == 0) ? 0 : $this->view->resumenProyecto['plan'] / $totalPlanMinutos) * 60, 2);
+      $this->view->actualResumenProductividad = round((($totalMinutos == 0 || $this->view->resumenProyecto['actual'] == 0) ? 0 : $this->view->resumenProyecto['actual'] / $totalMinutos) * 60, 2);
 
       $this->view->render('gestionProyecto/summary');
 

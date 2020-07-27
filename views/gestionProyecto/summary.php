@@ -33,10 +33,34 @@
 
       <div class="mt-4">
         <?php
+          if($this->sesion->getSesion('proyecto')['proceso'] != 'psp0' and $this->sesion->getSesion('proyecto')['proceso'] != 'psp01' ){
+            echo '
+            <h3><b>Resumen de productividad</b></h3>
+            <form class="table pb-4" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">
+                <table class="table table-sm table-bordered ">
+                    <thead class="table-primary">
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Actual</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <th class="text-left">Productividad (Tamaño/Hora)</th>
+                        <td>'.$this->planResumenProductividad.'</td>
+                        <td>'.$this->actualResumenProductividad.'</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </form>
+            ';
+            }
+
           if($this->sesion->getSesion('proyecto')['proceso'] != 'psp0'){
             echo '
             <h3><b>Resumen tamaño proyecto</b></h3>
-            <form class="table" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">
+            <form class="table pb-4" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">
                 <table class="table table-sm table-bordered ">
                     <thead class="table-primary">
                       <tr>
