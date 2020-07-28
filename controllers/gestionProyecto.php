@@ -179,7 +179,7 @@
         'pm' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['pm'] * 100) / $totalRemovidos, 2),
       ];
 
-      // defectos inyectados
+      // defectos removidos
       $this->loadModel('PlanDefectos');
       $this->view->planDefecEliminados = [
         'planeacion' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['planeacion'] : -1,
@@ -222,6 +222,32 @@
 
       $this->view->planResumenProductividad = round((($totalPlanMinutos == 0 || $this->view->resumenProyecto['plan'] == 0) ? 0 : $this->view->resumenProyecto['plan'] / $totalPlanMinutos) * 60, 2);
       $this->view->actualResumenProductividad = round((($totalMinutos == 0 || $this->view->resumenProyecto['actual'] == 0) ? 0 : $this->view->resumenProyecto['actual'] / $totalMinutos) * 60, 2);
+
+      $this->view->planEficienciaDefectosRemovidos = [
+        'ehdr' => ($this->view->planTiempos['designRevisado'] == 0) ? 0 : round(($this->view->planDefecEliminados['designRevisado'] / $this->view->planTiempos['designRevisado'] ) * 60, 2),
+        'ehcr' => ($this->view->planTiempos['codigoRevisado'] == 0) ? 0 : round(($this->view->planDefecEliminados['codigoRevisado'] / $this->view->planTiempos['codigoRevisado'] ) * 60, 2),
+        'ehc' => ($this->view->planTiempos['compilacion'] == 0) ? 0 : round(($this->view->planDefecEliminados['compilacion'] / $this->view->planTiempos['compilacion'] ) * 60, 2),
+        'ehpu' => ($this->view->planTiempos['pu'] == 0) ? 0 : round(($this->view->planDefecEliminados['pu'] / $this->view->planTiempos['pu'] ) * 60, 2),
+      ];
+
+      $this->view->planEficienciaDefectosRemovidosDos = [
+        'dr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehdr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
+        'cr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehcr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
+        'c' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehc'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
+      ];
+
+      $this->view->actualEficienciaDefectosRemovidos = [
+        'ehdr' => ($this->view->tablaTiempos['desingRevisado'] == 0) ? 0 : round(($this->view->tablaDefecEliminados['desingRevisado'] / $this->view->tablaTiempos['desingRevisado'] ) * 60, 2),
+        'ehcr' => ($this->view->tablaTiempos['codigoRevisado'] == 0) ? 0 : round(($this->view->tablaDefecEliminados['codigoRevisado'] / $this->view->tablaTiempos['codigoRevisado'] ) * 60, 2),
+        'ehc' => ($this->view->tablaTiempos['compilar'] == 0) ? 0 : round(($this->view->tablaDefecEliminados['compilacion'] / $this->view->tablaTiempos['compilar'] ) * 60, 2),
+        'ehpu' => ($this->view->tablaTiempos['pu'] == 0) ? 0 : round(($this->view->tablaDefecEliminados['pu'] / $this->view->tablaTiempos['pu'] ) * 60, 2),
+      ];
+
+      $this->view->actualEficienciaDefectosRemovidosDos = [
+        'dr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehdr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
+        'cr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehcr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
+        'c' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehc'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
+      ];
 
       $this->view->render('gestionProyecto/summary');
 

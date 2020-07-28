@@ -553,7 +553,59 @@
               </div>
         </form>
       </div>
-    </div>
+      <?php if($this->sesion->getSesion('proyecto')['proceso'] != 'psp0' and $this->sesion->getSesion('proyecto')['proceso'] != 'psp01' and $this->sesion->getSesion('proyecto')['proceso'] != 'psp10' ){
+      echo '
+      <h3><b>Eficiencia de defectos removidos</b></h3>
+      <form class="table pb-4" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">
+        <table class="table table-sm table-bordered ">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">Fase</th>
+              <th scope="col">Plan</th>
+              <th scope="col">Actual</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr>
+              <th class="text-left">Errores/Hora Diseño detalles revisados</th>
+              <td>'.$this->planEficienciaDefectosRemovidos['ehdr'] .'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidos['ehdr'] .'</td>
+            </tr>
+            <tr>
+              <th class="text-left">Errores/Hora Código revisado</th>
+              <td>'.$this->planEficienciaDefectosRemovidos['ehcr'] .'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidos['ehcr'] .'</td>
+            </tr>
+              <th class="text-left">Errores/Hora Compilación</th>
+              <td>'.$this->planEficienciaDefectosRemovidos['ehc'] .'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidos['ehc'] .'</td>
+
+            <tr>
+              <th class="text-left">Errores/Hora Pruebas unitarias</th>
+              <td>'.$this->planEficienciaDefectosRemovidos['ehpu'] .'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidos['ehpu'] .'</td>
+
+            </tr>
+              <th class="text-left">Diseño detallado revisado/Pruebas unitarias</th>
+              <td>'.$this->planEficienciaDefectosRemovidosDos['dr'].'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidosDos['dr'].'</td>
+            <tr>
+              <th class="text-left">Código revisado/Pruebas unitarias</th>
+              <td>'.$this->planEficienciaDefectosRemovidosDos['cr'].'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidosDos['cr'].'</td>
+
+            </tr>
+            <tr>
+              <th class="text-left">Compilación/Pruebas unitarias</th>
+              <td>'.$this->planEficienciaDefectosRemovidosDos['c'].'</td>
+              <td>'.$this->actualEficienciaDefectosRemovidosDos['c'].'</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>'; }?>
+
+
 </section>
 <?php  include_once "views/modalCambioPassword.php"; ?>
 <?php  include_once "views/footer.php";?>
