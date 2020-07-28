@@ -71,8 +71,12 @@
           </div>
           <div class="form-group text-center d-flex justify-content-around align-items-center">
             <a href="<?php echo constant('URL') ?>/proyectos" class="btn btn-link">Regresar</a>
-            <a href="<?php echo constant('URL').'/proyectos/asociar/'.$this->data['idProyecto']?>" class="btn btn-outline-primary">Asociar programador</a>
-            <a href="<?php echo constant('URL').'/proyectos/eliminar/'.$this->data['idProyecto']?>" class="btn btn-outline-danger" id="cta">Eliminar</a>
+            <?php
+              if(!empty($this->data['idProyecto'])){
+                echo '<a href="'.constant('URL').'/proyectos/asociar/'.$this->data['idProyecto'].'"class="btn btn-outline-primary">Asociar programador</a>';
+                echo '<a href="'.constant('URL').'/proyectos/eliminar/'.$this->data['idProyecto'].'" class="btn btn-outline-danger" id="cta">Eliminar</a>';
+              }
+            ?>
             <button type="submit" class="btn btn-success" id="cta">Guardar</button>
           </div>
         </div>

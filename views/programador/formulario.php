@@ -23,8 +23,8 @@
               </div>
               <input name="email" type="email" placeholder="Correo electronico" class="form-control" value="<?php echo $this->data['email'] ?>">
               <div class="input-group">
-                <input name="empresa" type="text" placeholder="Empresa" class="form-control mr-2" value="<?php echo $this->data['empresaNombre'] ?>">
-                <input name="experiencia" type="text" placeholder="Experiencia" class="form-control" value="<?php echo $this->data['experiencia'] ?> año(s)">
+                <input name="empresaNombre" type="text" placeholder="Empresa" class="form-control mr-2" value="<?php echo $this->data['empresaNombre'] ?>">
+                <input name="experienciaEmpresa" type="text" placeholder="Experiencia" class="form-control" value="<?php echo $this->data['experienciaEmpresa'] ?>">
               </div>
               <input name="enfoque" type="text" placeholder="Enfoque profesional" class="form-control" value="<?php echo $this->data['enfoqueEstudios'] ?>">
               <div class="input-group">

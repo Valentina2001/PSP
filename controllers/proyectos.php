@@ -102,7 +102,10 @@
       $this->view->render('proyectos/formulario');
     }
 
-    function asociar($codigo){
+    function asociar($codigo = 'nada'){
+        if($codigo == 'nada'){
+          $this->view->redirect('proyectos');
+        }
         $codigo = $codigo[0];
         $this->loadModel('titulosModel');
         $this->view->titulos = $this->model->getListado();

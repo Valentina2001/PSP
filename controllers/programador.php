@@ -205,8 +205,6 @@
 
       }
 
-
-
       $this->view->data = [
         'cedula' => (!isset($resultData[0]['cedula'])) ? "":  $resultData[0]['cedula'],
         'nombre' => (!isset($resultData[0]['nombre'])) ? "":  $resultData[0]['nombre'],
@@ -217,7 +215,7 @@
         'titulo' => (!isset($resultData[0]['titulo'])) ? "":  $resultData[0]['titulo'],
         'user' => (!isset($resultData[0]['user'])) ? "":  $resultData[0]['user'],
         'fechaIn' => (!isset($resultData[0]['fechaIn'])) ? "":  $resultData[0]['fechaIn'],
-        'experiencia' => (!isset($resultData[0]['experiencia'])) ? "":  $resultData[0]['experiencia'],
+        'experienciaEmpresa' => (!isset($resultData[0]['experienciaEmpresa'])) ? "":  $resultData[0]['experienciaEmpresa'],
         'tituloEstudio' => (!isset($resultData[0]['tituloEstudio'])) ? "":  $resultData[0]['tituloEstudio'],
         'enfoqueEstudios' => (!isset($resultData[0]['enfoqueEstudios'])) ? "":  $resultData[0]['enfoqueEstudios'],
         'rol' => (!isset($resultData[0]['rol'])) ? "":  $resultData[0]['rol'],
@@ -274,8 +272,8 @@
         'nombre' => (!isset($_POST['nombre'])) ? null : $_POST['nombre'] ,
         'apellido' => (!isset($_POST['apellido'])) ? null : $_POST['apellido'] ,
         'email' => (!isset($_POST['email'])) ? null : $_POST['email'] ,
-        'empresa' => (!isset($_POST['empresa'])) ? null : $_POST['empresa'] ,
-        'experiencia' => (!isset($_POST['experiencia'])) ? null : $_POST['experiencia'] ,
+        'empresaNombre' => (!isset($_POST['empresaNombre'])) ? null : $_POST['empresaNombre'] ,
+        'experienciaEmpresa' => (!isset($_POST['experienciaEmpresa'])) ? null : $_POST['experienciaEmpresa'] ,
         'enfoque' => (!isset($_POST['enfoque'])) ? null : $_POST['enfoque'] ,
         'tituloProfesional' => (!isset($_POST['tituloProfesional'])) ? null : $_POST['tituloProfesional'] ,
         'tituloDesarrollo' => (!isset($_POST['tituloDesarrollo'])) ? null : $_POST['tituloDesarrollo'] ,
@@ -306,17 +304,19 @@
         'lenguajesLDC' => (!isset($_POST['lenguajesLDC'])) ? "" : $_POST['lenguajesLDC'],
         'lenguaje' => (!isset($_POST['lenguaje'])) ? "" : $this->model->getLenguaje($_POST['lenguaje']),
         'lenguajeLDC' => (!isset($_POST['lenguajeLDC'])) ? "" : $_POST['lenguajeLDC'],
-
         // 'estado' => (!isset($_POST['estado'])) ? null : $_POST['estado'] ,
       ];
       $cedula = [$data['cedula']];
 
+      $this->loadModel('usuariosModel');
+      $validCedula = $this->model->validar('cedulaUsuario', $data['cedula']);
+      $validEmail = $this->model->validar('email', $data['email']);
+
       if($data['email'] == null){
         $this->formulario($cedula);
-        echo "<script>swal('PSP', 'El correo electronico o el usuario no pueden estar vacios', 'error')</script>";
+        echo "<script>swal('PSP', 'El correo electrónico no pueden estar vacios', 'error')</script>";
         die;
       }
-
 
       $this->loadModel('usuariosModel');
       $this->model->update($data);

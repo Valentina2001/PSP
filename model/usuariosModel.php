@@ -39,7 +39,7 @@
 					'titulo' => $row['idTitulo'], #titulo
           'user' => $row['user'],
           'fechaIn' => $row['fechaIn'],
-          'experiencia' => $row['experiencia'],
+          'experienciaEmpresa' => $row['experiencia'],
           'tituloEstudio' => $row['tituloEstudio'],
           'enfoqueEstudios' => $row['enfoqueEstudios'],
           'rol' => $row['rol'],
@@ -202,10 +202,10 @@
 					'cedula' => $data['cedula'],
 					'nombre' => $data['nombre'],
 					'apellido' => $data['apellido'],
-					'empresa' => $data['empresa'],
+					'empresa' => $data['empresaNombre'],
 					'email' => $data['email'],
 					'idTitulo' => $data['tituloDesarrollo'],
-					'experiencia' => $data['experiencia'],
+					'experiencia' => $data['experienciaEmpresa'],
 					'tituloEstudio' => $data['tituloProfesional'],
 					'enfoqueEstudios' => $data['enfoque']
 					// 'estado' => $data['estado'],
@@ -218,10 +218,10 @@
 					'cedula' => $data['cedula'],
 					'nombre' => $data['nombre'],
 					'apellido' => $data['apellido'],
-					'empresa' => $data['empresa'],
+					'empresa' => $data['empresaNombre'],
 					'email' => $data['email'],
 					'idTitulo' => $data['tituloDesarrollo'],
-					'experiencia' => $data['experiencia'],
+					'experiencia' => $data['experienciaEmpresa'],
 					'tituloEstudio' => $data['tituloProfesional'],
 					'enfoqueEstudios' => $data['enfoque']
 				]);
