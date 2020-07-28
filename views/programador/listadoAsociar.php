@@ -27,7 +27,7 @@
           </div>
           <div class="content__search pb-4">
             <div class="input-group">
-              <input type="text" class="form-control " id="search" placeholder="Buscar aspirantes x cedula">
+              <input type="text" class="form-control " id="search" placeholder="Buscar aspirantes">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
@@ -40,10 +40,10 @@
                 <table class="table table-bordered table-striped">
                     <thead class="table-primary">
                       <tr>
-                        <th scope="col">Cedula</th>
+                        <th scope="col">Cédula</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Correo electronico</th>
+                        <th scope="col">Correo electrónico</th>
                         <th scope="col">Usuario</th>
                         <th scope="col" colspan="2">Acciones</th>
                       </tr>

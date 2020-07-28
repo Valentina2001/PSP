@@ -15,7 +15,7 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Fecha</th>
-                      <th scope="col">nombre</th>
+                      <th scope="col">Nombre</th>
                       <th scope="col" colspan="2">Acciones</th>
                     </tr>
                   </thead>
@@ -30,20 +30,19 @@
                         echo "<td id='resEsperado' class='d-none'>".$row['resEsperado']."</td>";
                         echo "<td id='resActual' class='d-none'>".$row['resActual']."</td>";
                         echo "<td id='descripcion' class='d-none'>".$row['descripcion']."</td>";
-                        echo "<td class='text-center'><a href='".constant('URL')."gestionProyecto/reportesEliminar/".$row['idReporte']."' class='btn btn-outline-danger fas fa-info far fa-trash-alt'></a> </td>";
-                        echo "<td class='text-center'><a href='#' class='btn btn-outline-primary fas fa-info visualizar-modal' data-toggle='modal' data-target='#reporteActualizar'></a> </td></tr>";
+                        echo "<td class='text-center'><a href='#' class='btn btn-outline-primary fas fa-info visualizar-modal' data-toggle='modal' data-target='#reporteActualizar'></a> </td>";
+                        echo "<td class='text-center'><a href='".constant('URL')."gestionProyecto/reportesEliminar/".$row['idReporte']."' class='btn btn-outline-danger fas fa-info far fa-trash-alt'></a> </td></tr>";
                       }
                     ?>
                   </tbody>
                 </table>
               </div>
               <div class="float-right">
-                Total: <?php // echo count($this->data) ?>
+                Total: <?php echo count($this->data) ?>
               </div>
             </div>
         </div>
       </div>
-
     </div>
 </section>
 
@@ -71,16 +70,16 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12 col-md-4">
-                      Descripcion del objetivo
-                      <textarea name="objetivo" rows="6" cols="80" class="form-control" placeholder="Descripcion del objetivo" required id="mObjetivo"></textarea>
+                      Descripción del objetivo
+                      <textarea name="objetivo" rows="6" cols="80" class="form-control" placeholder="Descripción del objetivo" required id="mObjetivo"></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
-                      Descripcion de condiciones
-                      <textarea name="condiciones" rows="6" cols="80" class="form-control" placeholder="Descripcion de condiciones" required id="mCondiciones"></textarea>
+                      Descripción de condiciones
+                      <textarea name="condiciones" rows="6" cols="80" class="form-control" placeholder="Descripción de condiciones" required id="mCondiciones"></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
                       Descripción
-                      <textarea name="descripcion" rows="6" cols="80" class="form-control" placeholder="Descripcion" required id="mDescripcion"></textarea>
+                      <textarea name="descripcion" rows="6" cols="80" class="form-control" placeholder="Descripción" required id="mDescripcion"></textarea>
                     </div>
                   </div>
                   <div class="form-row">
@@ -121,16 +120,16 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12 col-md-4">
-                      Descripcion del objetivo
-                      <textarea name="objetivo" rows="6" cols="80" class="form-control" placeholder="Descripcion del objetivo" required></textarea>
+                      Descripción del objetivo
+                      <textarea name="objetivo" rows="6" cols="80" class="form-control" placeholder="Descripción del objetivo" required></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
-                      Descripcion de condiciones
-                      <textarea name="condiciones" rows="6" cols="80" class="form-control" placeholder="Descripcion de condiciones" required></textarea>
+                      Descripción de condiciones
+                      <textarea name="condiciones" rows="6" cols="80" class="form-control" placeholder="Descripción de condiciones" required></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
                       Descripción
-                      <textarea name="descripcion" rows="6" cols="80" class="form-control" placeholder="Descripcion" required></textarea>
+                      <textarea name="descripcion" rows="6" cols="80" class="form-control" placeholder="Descripción" required></textarea>
                     </div>
                   </div>
                   <div class="form-row">

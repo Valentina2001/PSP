@@ -79,8 +79,8 @@
                   <textarea name="comentarios" rows="8" cols="80" class="form-control" placeholder="Comentarios sobre el registro de tiempo"></textarea>
                 </div>
                 <div class="form-group">
-                  <button type="reset" id="resetear2" class="btn btn-outline-danger">cancelar</button>
-                  <button type="submit" class="btn btn-success" id="ctaGuardar" disabled>guardar</button>
+                  <button type="reset" id="resetear2" class="btn btn-outline-danger">Cancelar</button>
+                  <button type="submit" class="btn btn-success" id="ctaGuardar" disabled>Guardar</button>
                 </div>
                </div>
             </form>
@@ -147,7 +147,7 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12  col-sm-6">
-                      Tiempo Trabajado
+                      Tiempo trabajado
                       <input type="text" disabled placeholder="Tiempo trabajado" class="form-control " id="mTiempoModal" value="1">
                     </div>
                     <div class="form-group col-12  col-sm-6">

@@ -70,7 +70,7 @@
             <textarea name="descripcion" rows="8" cols="80" class="form-control" name="descripcion" ><?php echo $this->data['descripcion']; ?></textarea>
           </div>
           <div class="form-group text-center d-flex justify-content-around align-items-center">
-            <a href="<?php echo constant('URL') ?>/proyectos" class="btn btn-link">regresar</a>
+            <a href="<?php echo constant('URL') ?>/proyectos" class="btn btn-link">Regresar</a>
             <a href="<?php echo constant('URL').'/proyectos/asociar/'.$this->data['idProyecto']?>" class="btn btn-outline-primary">Asociar programador</a>
             <a href="<?php echo constant('URL').'/proyectos/eliminar/'.$this->data['idProyecto']?>" class="btn btn-outline-danger" id="cta">Eliminar</a>
             <button type="submit" class="btn btn-success" id="cta">Guardar</button>

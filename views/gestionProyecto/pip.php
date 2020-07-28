@@ -9,20 +9,20 @@
             <div class="row m-0">
               <div class="m-0">
                 <div class="form-group">
-                  Descripcion Problema
-                  <textarea name="problema" rows="6" cols="80" class="form-control" placeholder="Descripcion de problema" required></textarea>
+                  Descripción Problema
+                  <textarea name="problema" rows="6" cols="80" class="form-control" placeholder="Descripción de problema" required></textarea>
                 </div>
                 <div class="form-group">
-                  Descripcion de la propuesta
-                  <textarea name="propuesta" rows="6" cols="80" class="form-control" placeholder="Descripcion de propuesta" required></textarea>
+                  Descripción de la propuesta
+                  <textarea name="propuesta" rows="6" cols="80" class="form-control" placeholder="Descripción de propuesta" required></textarea>
                 </div>
                 <div class="form-group">
-                  Descripcion de la solución
-                  <textarea name="comentarios" rows="6" cols="80" class="form-control" placeholder="Descripcion de la solución" required></textarea>
+                  Descripción de la solución
+                  <textarea name="comentarios" rows="6" cols="80" class="form-control" placeholder="Descripción de la solución" required></textarea>
                 </div>
                 <div class="form-group">
-                  <button type="reset" id="resetear2" class="btn btn-outline-danger">cancelar</button>
-                  <button type="submit" class="btn btn-success">guardar</button>
+                  <button type="reset" id="resetear2" class="btn btn-outline-danger">Cancelar</button>
+                  <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
                </div>
             </form>

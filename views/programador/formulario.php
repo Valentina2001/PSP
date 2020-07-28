@@ -28,7 +28,7 @@
               </div>
               <input name="enfoque" type="text" placeholder="Enfoque profesional" class="form-control" value="<?php echo $this->data['enfoqueEstudios'] ?>">
               <div class="input-group">
-                <input name="tituloProfesional" type="text" placeholder="Titulo profesional" class="form-control mr-2" value="<?php echo $this->data['tituloEstudio'] ?>">
+                <input name="tituloProfesional" type="text" placeholder="Título profesional" class="form-control mr-2" value="<?php echo $this->data['tituloEstudio'] ?>">
                 <select class="custom-select form-control" id="ambito" name="tituloDesarrollo">
                   <?php
                     $option = [
@@ -58,7 +58,7 @@
                   <div class="col-sm-12 col-md-6">
                     <input type="text" name="idExpSoftware" value="<?php echo $this->data['idExpSoftware']; ?>" class="hide">
                     <div class="alert alert-success" role="alert">
-                      <p>Los iguientes campos deben ser ingresados en años, dependiendo la experiencia que tenga cada uno de ellos</p>
+                      <p>Los siguientes campos deben ser ingresados en años, dependiendo la experiencia que tenga en cada uno de ellos</p>
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -105,7 +105,7 @@
                   </div>
                   <div class="col-sm-12 col-md-6">
                     <div class="alert alert-success" role="alert">
-                      <p>en el año anterior cuanto tiempo le dedico a cada una de las areas a continuación. Respuesta en un rango de 0 a 100%</p>
+                      <p>En el año anterior cuanto tiempo le dedico a cada una de las áreas a continuación. La respuesta en un rango de 0 a 100%</p>
                     </div>
                     <div class="input-group">
                       <input  name="pempresa" type="number" min="0" max="100" class="form-control " placeholder="Empresa" value="<?php echo $this->data['pempresa'] ?>">
@@ -136,12 +136,12 @@
           </div>
           <div class="row">
             <div class="col-sm-12 col-md-6 mt-4">
-              <p>¿En que lenguaje progamas?</p>
+              <p>¿En que lenguajes progamas?</p>
               <!-- <input type="text" class="form-control mb-2" placeholder="¿En que lenguajes programas?" disabled> -->
               <div class="list-group list-group-formulario">
                 <a href="#" class="list-group-item">
                   <input type="text" name="idExpProgramando" value="<?php echo $this->data['idExpProgramando']; ?>" class="hide">
-                  <input type="search" class="form-control" id="search" placeholder="Busar lenguaje">
+                  <input type="search" class="form-control" id="search" placeholder="Buscar lenguaje">
                 </a>
                 <ul id="list-lenguajes">
                    <!-- bg-primary lenguaje-active -->
@@ -165,7 +165,7 @@
               <div class="list-group list-group-formulario mb-2" >
                 <input type="text" name="listLenguajes" value="No hay lenguajes" class="form-control d-none" id="list-conocimiento">
               </div>
-              <p class="mb-0">Numero de lineas escritas en todos los lenguajes</p>
+              <p class="mb-0">Número de líneas escritas en todos los lenguajes</p>
               <input type="number" name="lenguajesLDC" min="0" placeholder="LDC en todos los programas" class="form-control mt-0 mb-3 " value="<?php echo $this->data['lenguajesLDC'] ?>">
 
               <p class="mt-2 mb-0">Lenguaje que mejor manejas</p>

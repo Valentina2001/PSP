@@ -134,7 +134,7 @@
       $this->loadModel('usuariosModel');
       $nombreProgramador = $this->model->getUsuario($aux2)[0]['nombre'];
       if($resultValid){
-        echo "<script>swal('PSP', 'Se guardo a ".$nombreProgramador." como un nuevo asociado', 'success')</script>";
+        echo "<script>swal('PSP', 'Se guardó a ".$nombreProgramador." como un nuevo asociado', 'success')</script>";
       }
     }
 
@@ -147,7 +147,6 @@
       $aux = [$idProyecto];
 
       $this->loadModel('gestionProyetoModel');
-      // $idProyectoUsuario = $this->model->validarAsociado($cedula, $idProyecto)['idProyectoUsuario'];
       $idProyectoUsuario = $this->model->validarAsociado($cedula, $idProyecto)['idProyectoUsuario'];
 
       $this->loadModel('usuariosModel');
@@ -165,7 +164,7 @@
 
       $this->asociar($aux);
       if($resultValid){
-        echo "<script>swal('PSP', 'Se elimino a ".$nombreProgramador." como asociado a este proyecto', 'success')</script>";
+        echo "<script>swal('PSP', 'Se eliminó a ".$nombreProgramador." como asociado de este proyecto', 'success')</script>";
       }
     }
   }

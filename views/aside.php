@@ -6,7 +6,7 @@
           switch ($rol) {
             case 'administrador':
               echo '
-              <li class="aside__item activo">
+              <li class="aside__item">
                   <div class="aside__link"><i class="aside__icon left fas fa-folder"></i><a href="'.constant('URL').'proyectos" >Proyectos</a></div>
               </li>
               <li class="aside__item">
@@ -69,7 +69,7 @@
                       ';
                       break;
 
-                    case 'psp1':
+                    default:
                       echo '
                         <li class="aside__item">
                           <div class="aside__link"><i class="aside__icon left fas fa-file-invoice"></i><a href="'.constant('URL').'gestionProyecto/summary" >Summary</a></div>
@@ -91,9 +91,6 @@
                         </li>
                       ';
                       break;
-                    default :
-
-                    break;
                   }
 
                   echo '

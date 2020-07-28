@@ -8,9 +8,9 @@
                 <table class="table table-bordered table-striped">
                     <thead class="table-primary">
                       <tr>
-                        <th scope="col">Codigo</th>
+                        <th scope="col">Código</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Descripcion</th>
+                        <th scope="col">Descripción</th>
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
@@ -46,7 +46,7 @@
                 <form class="form" method="post" action="<?php echo constant('URL') ?>/gestionProyecto/erroresActualizar">
                   <div class="form-row">
                     <div class="form-group col-12  col-sm-6">
-                      Codigo
+                      Código
                       <input type="text" disabled placeholder="Codigo" class="form-control " id="mCodigo">
                     </div>
                     <div class="form-group col-12  col-sm-6">
@@ -55,7 +55,7 @@
                     </div>
                   </div>
                   <div class="form-group col-12">
-                    Descripcion
+                    Descripción
                     <textarea rows="4" cols="80" id="mDescripcion" placeholder="Descripcion" class="form-control" disabled></textarea>
                   </div>
                 </form>

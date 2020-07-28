@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                   <button type="button" name="button" id='resetear' class="btn btn-outline-danger">Reset</button>
-                  <button type="button" name="button" id='guardar' class="btn btn-outline-success">guardar</button>
+                  <button type="button" name="button" id='guardar' class="btn btn-outline-success">Guardar</button>
                   <button type="button" name="button" id="iniciar" class="btn btn-primary">Iniciar</button>
                 </div>
               </div>
@@ -117,16 +117,16 @@
                 </div>
 
                 <div class="form-group">
-                  Descripcion del error
+                  Descripción del error
                   <textarea name="comentarioError" rows="4" cols="80" class="form-control" placeholder="Describa el error" required></textarea>
                 </div>
                 <div class="form-group">
-                  Descripcion de la solucion
-                  <textarea name="solucionError" rows="4" cols="80" class="form-control" placeholder="Describa como soluciono el error" required></textarea>
+                  Descripcioón de la solución
+                  <textarea name="solucionError" rows="4" cols="80" class="form-control" placeholder="Describa como solucionó el error" required></textarea>
                 </div>
                 <div class="form-group">
-                  <button type="reset" id="resetear2" class="btn btn-outline-danger">cancelar</button>
-                  <button type="submit" class="btn btn-success" id="ctaGuardar" disabled>guardar</button>
+                  <button type="reset" id="resetear2" class="btn btn-outline-danger">Cancelar</button>
+                  <button type="submit" class="btn btn-success" id="ctaGuardar" disabled>Guardar</button>
                 </div>
                </div>
             </form>

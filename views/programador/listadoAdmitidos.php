@@ -20,7 +20,7 @@
         <div class="content__head">
           <div class="content__search pb-4">
             <div class="input-group">
-              <input type="text" class="form-control " id="search" placeholder="Buscar x cedula de admitidos">
+              <input type="text" class="form-control " id="search" placeholder="Buscar por cédula:">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
@@ -120,7 +120,6 @@
                         </form>
                     <div class="modal-footer">
                         <a href="<?php echo constant('URL') ?>programador/formulario/" class="btn btn-secondary" id="ctaV">Editar información</a>
-                        <button type="button" class="btn btn-primary">Ver proyecto</button>
                     </div>
                 </div>
             </div>

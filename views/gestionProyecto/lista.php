@@ -39,7 +39,7 @@
                         <th scope="col">Medida</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha creación</th>
-                        <th scope="col">Fecha max</th>
+                        <th scope="col">Fecha máx.</th>
                         <th scope="col" colspan="2">Acciones</th>
                       </tr>
                     </thead>

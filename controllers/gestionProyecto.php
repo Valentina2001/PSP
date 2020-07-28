@@ -34,7 +34,7 @@
       $this->loadModel('gestionProyetoModel');
       $this->model->terminar($this->cedula, $codigo[0]);
       $this->render();
-      echo "<script>swal('PSP', 'El proyecto a terminado exitosamente', 'success')</script>";
+      echo "<script>swal('PSP', 'El proyecto terminó exitosamente', 'success')</script>";
     }
 
     function abrirProyecto($codigo = 0){
@@ -269,7 +269,7 @@
       $this->loadModel('planTiempo');
       if($this->model->get($resultValid['idProyectoUsuario']) == false){
         $this->view->render('gestionProyecto/tiempos');
-        echo "<script>swal('PSP', 'Para poder comenzar en el proyecto debes llenar la tabla de summary', 'info')</script>";
+        echo "<script>swal('PSP', 'Para poder comenzar con el proyecto debes llenar las tablas de summary', 'info')</script>";
         die;
       }
 
@@ -485,7 +485,7 @@
 
       if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
         $this->errores();
-        echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
+        echo "<script>swal('PSP', 'El proyecto termino, NO puedes realizar más cambios en él', 'warning')</script>";
 
       }else{
         $this->loadModel('ErroresProyectoModel');

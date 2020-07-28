@@ -36,7 +36,7 @@
                         <th scope="col">Proceso</th>
                         <th scope="col">Medida</th>
                         <th scope="col">Fecha creación</th>
-                        <th scope="col">Fecha Finalización</th>
+                        <th scope="col">Fecha finalización</th>
                         <th scope="col" colspan="3">Acciones</th>
                       </tr>
                     </thead>
@@ -79,7 +79,7 @@
 </section>
 
 <div class="modal fade " id="detallesProgramador">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content ">
             <div class="modal-header bg-primary ">
                 <h5 class="modal-title text-light" id="exampleModalLabel">Personal Software Process</h5>

@@ -19,7 +19,7 @@
         <div class="content__head">
           <div class="content__search pb-4">
             <div class="input-group">
-              <input type="text" class="form-control " id="searchLenguaje" placeholder="Buscar lenguaje de programación">
+              <input type="text" class="form-control " id="searchLenguaje" placeholder="Buscar lenguaje">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>

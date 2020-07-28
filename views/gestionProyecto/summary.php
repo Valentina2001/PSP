@@ -25,7 +25,7 @@
             <input type="text" name="" value="<?php echo $this->encabezado['fechaIn'] ?>" id="proyecto" class="form-control" disabled>
           </div>
           <div class="col-12 col-sm-6">
-            <label for="proyecto">Fecha Maxima</label>
+            <label for="proyecto">Fecha Máxima</label>
             <input type="text" name="" value="<?php echo $this->encabezado['fechaOut'] ?>" id="proyecto" class="form-control" disabled>
           </div>
         </div>
@@ -152,7 +152,7 @@
                     <td><?php echo $this->porcTiempos['codigo'] ?> %</td>
                   </tr>
                   <tr>
-                    <th class="text-left">Código revisado</th>
+                    <th class="text-left">Código Revisado</th>
                     <?php
                       if($this->planTiempos['codigoRevisado'] != -1){
                         echo '<td>'. $this->planTiempos['codigoRevisado'].'</td>';
@@ -462,7 +462,7 @@
                     <td><?php echo $this->porcDefectosEliminados['codigo'] ?> %</td>
                   </tr>
                   <tr>
-                    <th class="text-left">Código revisado</th>
+                    <th class="text-left">Código Revisado</th>
                     <?php
                       if($this->planDefecEliminados['codigoRevisado'] != -1){
                         echo '<td>'. $this->planDefecEliminados['codigoRevisado'].'</td>';

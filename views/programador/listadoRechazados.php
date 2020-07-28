@@ -120,7 +120,6 @@
                         </form>
                     <div class="modal-footer">
                         <a href="<?php echo constant('URL') ?>programador/formulario/" class="btn btn-secondary" id="ctaV">Editar información</a>
-                        <button type="button" class="btn btn-primary">Ver proyecto</button>
                     </div>
                 </div>
             </div>

@@ -11,10 +11,10 @@
           <form method="POST" action="<?php echo constant('URL') ?>login/iniciando" class="col-sm-6">
             <h1 class="login__formulario-title">Inicio sesión</h1>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Usuario" name="usuario">
+              <input type="text" class="form-control" placeholder="Usuario:" name="usuario">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Contraseña" name="password">
+              <input type="password" class="form-control" placeholder="Contraseña:" name="password">
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">

@@ -17,19 +17,19 @@
               <input type="email" class="form-control " placeholder="Correo electronico:" id="email" name="email">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Nombre completo" name="nombre">
+              <input type="text" class="form-control" placeholder="Nombre completo:" name="nombre">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Apellidos completos" name="apellido">
+              <input type="text" class="form-control" placeholder="Apellidos completos:" name="apellido">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Usuario" id="usuario" name="user">
+              <input type="text" class="form-control" placeholder="Usuario:" id="usuario" name="user">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Contraseña" id="password" name="password">
+              <input type="password" class="form-control" placeholder="Contraseña:" id="password" name="password">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Confirmar contraseña" id="password2" name="password2" disabled>
+              <input type="password" class="form-control" placeholder="Confirmar contraseña:" id="password2" name="password2" disabled>
             </div>
             <span id="text_password2" class="form-text "></span>
 
