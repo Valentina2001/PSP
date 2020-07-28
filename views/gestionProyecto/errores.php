@@ -121,7 +121,7 @@
                   <textarea name="comentarioError" rows="4" cols="80" class="form-control" placeholder="Describa el error" required></textarea>
                 </div>
                 <div class="form-group">
-                  Descripcioón de la solución
+                  Descripción de la solución
                   <textarea name="solucionError" rows="4" cols="80" class="form-control" placeholder="Describa como solucionó el error" required></textarea>
                 </div>
                 <div class="form-group">
