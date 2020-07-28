@@ -126,6 +126,18 @@
                     <td><?php echo $this->tablaTiempos['desing'] ?></td>
                     <td><?php echo $this->porcTiempos['desing'] ?> %</td>
                   </tr>
+                  <tr>
+                    <th class="text-left">Diseño Revisado</th>
+                    <?php
+                      if($this->planTiempos['designRevisado'] != -1){
+                        echo '<td>'. $this->planTiempos['designRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="designRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaTiempos['desingRevisado'] ?></td>
+                    <td><?php echo $this->porcTiempos['desingRevisado'] ?> %</td>
+                  </tr>
 
                   <tr>
                     <th class="text-left">Código</th>
@@ -138,6 +150,18 @@
                     ?>
                     <td><?php echo $this->tablaTiempos['codigo'] ?></td>
                     <td><?php echo $this->porcTiempos['codigo'] ?> %</td>
+                  </tr>
+                  <tr>
+                    <th class="text-left">Código revisado</th>
+                    <?php
+                      if($this->planTiempos['codigoRevisado'] != -1){
+                        echo '<td>'. $this->planTiempos['codigoRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="codigoRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaTiempos['codigoRevisado'] ?></td>
+                    <td><?php echo $this->porcTiempos['codigoRevisado'] ?> %</td>
                   </tr>
 
                   <tr>
@@ -257,6 +281,18 @@
                     <td><?php echo $this->tablaDefectos['desing'] ?></td>
                     <td><?php echo $this->porcDefectos['desing'] ?> %</td>
                   </tr>
+                  <tr>
+                    <th class="text-left">Diseño Revisado</th>
+                    <?php
+                      if($this->planDefectos['designRevisado'] != -1){
+                        echo '<td>'. $this->planDefectos['designRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="designRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['desingRevisado'] ?></td>
+                    <td><?php echo $this->porcDefectos['desingRevisado'] ?> %</td>
+                  </tr>
 
                   <tr>
                     <th class="text-left">Código</th>
@@ -269,6 +305,18 @@
                     ?>
                     <td><?php echo $this->tablaDefectos['codigo'] ?></td>
                     <td><?php echo $this->porcDefectos['codigo'] ?> %</td>
+                  </tr>
+                  <tr>
+                    <th class="text-left">Código Revisado</th>
+                    <?php
+                      if($this->planDefectos['codigoRevisado'] != -1){
+                        echo '<td>'. $this->planDefectos['codigoRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="codigoRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefectos['codigoRevisado'] ?></td>
+                    <td><?php echo $this->porcDefectos['codigoRevisado'] ?> %</td>
                   </tr>
 
                   <tr>
@@ -388,6 +436,18 @@
                     <td><?php echo $this->tablaDefecEliminados['desing'] ?></td>
                     <td><?php echo $this->porcDefectosEliminados['desing'] ?> %</td>
                   </tr>
+                  <tr>
+                    <th class="text-left">Diseño Revisado</th>
+                    <?php
+                      if($this->planDefecEliminados['designRevisado'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['designRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="designRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['desingRevisado'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['desingRevisado'] ?> %</td>
+                  </tr>
 
                   <tr>
                     <th class="text-left">Código</th>
@@ -400,6 +460,18 @@
                     ?>
                     <td><?php echo $this->tablaDefecEliminados['codigo'] ?></td>
                     <td><?php echo $this->porcDefectosEliminados['codigo'] ?> %</td>
+                  </tr>
+                  <tr>
+                    <th class="text-left">Código revisado</th>
+                    <?php
+                      if($this->planDefecEliminados['codigoRevisado'] != -1){
+                        echo '<td>'. $this->planDefecEliminados['codigoRevisado'].'</td>';
+                      }else{
+                        echo '<td  style="max-width: 150px;"><input type="number" name="codigoRevisado" value="" class="form-control" required> </td>';
+                      }
+                    ?>
+                    <td><?php echo $this->tablaDefecEliminados['codigoRevisado'] ?></td>
+                    <td><?php echo $this->porcDefectosEliminados['codigoRevisado'] ?> %</td>
                   </tr>
 
                   <tr>

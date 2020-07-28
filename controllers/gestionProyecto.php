@@ -98,7 +98,9 @@
       $this->view->planTiempos = [
         'planeacion' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['planeacion'] : -1,
         'design' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['design'] : -1,
+        'designRevisado' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['designRevisado'] : -1,
         'codigo' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['codigo'] : -1,
+        'codigoRevisado' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['codigoRevisado'] : -1,
         'compilacion' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['compilacion'] : -1,
         'pu' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['pruebasUnitarias'] : -1,
         'pm' => ( $this->model->get($idProyectoUsuario) ) ? $this->model->get($idProyectoUsuario)['postMortem'] : -1,
@@ -112,7 +114,9 @@
       $this->view->tablaTiempos = [
         'planeacion' => $this->model->sumatoria($idProyectoUsuario, 'fase01'),
         'desing' => $this->model->sumatoria($idProyectoUsuario, 'fase02'),
+        'desingRevisado' => $this->model->sumatoria($idProyectoUsuario, 'fase03'),
         'codigo' => $this->model->sumatoria($idProyectoUsuario, 'fase04'),
+        'codigoRevisado' => $this->model->sumatoria($idProyectoUsuario, 'fase05'),
         'compilar' => $this->model->sumatoria($idProyectoUsuario, 'fase06'),
         'pu' => $this->model->sumatoria($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoria($idProyectoUsuario, 'fase08'),
@@ -126,7 +130,9 @@
       $this->view->porcTiempos = [
         'planeacion' =>  ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['planeacion'] * 100) / $totalMinutos, 2),
         'desing' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['desing'] * 100) / $totalMinutos, 2),
+        'desingRevisado' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['desingRevisado'] * 100) / $totalMinutos, 2),
         'codigo' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['codigo'] * 100) / $totalMinutos, 2),
+        'codigoRevisado' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['codigoRevisado'] * 100) / $totalMinutos, 2),
         'compilar' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['compilar'] * 100) / $totalMinutos, 2),
         'pu' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['pu'] * 100) / $totalMinutos, 2),
         'pm' => ($totalMinutos == 0) ? 0 : round(($this->view->tablaTiempos['pm'] * 100) / $totalMinutos, 2),
@@ -138,7 +144,9 @@
       $this->view->planDefectos = [
         'planeacion' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['planeacion'] : -1,
         'design' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['design'] : -1,
+        'designRevisado' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['designRevisado'] : -1,
         'codigo' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['codigo'] : -1,
+        'codigoRevisado' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['codigoRevisado'] : -1,
         'compilacion' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['compilacion'] : -1,
         'pu' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['pruebasUnitarias'] : -1,
         'pm' => ( $this->model->getInyectados($idProyectoUsuario) ) ? $this->model->getInyectados($idProyectoUsuario)['postMortem'] : -1,
@@ -148,7 +156,9 @@
       $this->view->tablaDefectos = [
         'planeacion' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase01'),
         'desing' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase02'),
+        'desingRevisado' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase03'),
         'codigo' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase04'),
+        'codigoRevisado' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase05'),
         'compilar' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase06'),
         'pu' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoriaDefectos($idProyectoUsuario, 'fase08'),
@@ -161,7 +171,9 @@
       $this->view->porcDefectos = [
         'planeacion' =>   ($totalRemovidos == 0) ? 0 : round(($this->view->tablaDefectos['planeacion'] * 100) / $totalRemovidos, 2),
         'desing' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['desing'] * 100) / $totalRemovidos, 2),
+        'desingRevisado' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['desingRevisado'] * 100) / $totalRemovidos, 2),
         'codigo' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['codigo'] * 100) / $totalRemovidos, 2),
+        'codigoRevisado' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['codigoRevisado'] * 100) / $totalRemovidos, 2),
         'compilar' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['compilar'] * 100) / $totalRemovidos, 2),
         'pu' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['pu'] * 100) / $totalRemovidos, 2),
         'pm' => ($totalRemovidos == 0) ? 0 :round(($this->view->tablaDefectos['pm'] * 100) / $totalRemovidos, 2),
@@ -172,7 +184,9 @@
       $this->view->planDefecEliminados = [
         'planeacion' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['planeacion'] : -1,
         'design' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['design'] : -1,
+        'designRevisado' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['designRevisado'] : -1,
         'codigo' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['codigo'] : -1,
+        'codigoRevisado' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['codigoRevisado'] : -1,
         'compilacion' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['compilacion'] : -1,
         'pu' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['pruebasUnitarias'] : -1,
         'pm' => ( $this->model->getRemovidos($idProyectoUsuario) ) ? $this->model->getRemovidos($idProyectoUsuario)['postMortem'] : -1,
@@ -182,7 +196,9 @@
       $this->view->tablaDefecEliminados = [
         'planeacion' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase01'),
         'desing' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase02'),
+        'desingRevisado' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase03'),
         'codigo' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase04'),
+        'codigoRevisado' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase05'),
         'compilar' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase06'),
         'pu' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase07'),
         'pm' => $this->model->sumatoriaDefectosRemovidos($idProyectoUsuario, 'fase08'),
@@ -196,7 +212,9 @@
       $this->view->porcDefectosEliminados = [
         'planeacion' =>  ($totalErrores == 0) ? 0 :  round(($this->view->tablaDefecEliminados['planeacion'] * 100) / $totalErrores, 2),
         'desing' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['desing'] * 100) / $totalErrores, 2),
+        'desingRevisado' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['desingRevisado'] * 100) / $totalErrores, 2),
         'codigo' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['codigo'] * 100) / $totalErrores, 2),
+        'codigoRevisado' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['codigoRevisado'] * 100) / $totalErrores, 2),
         'compilar' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['compilar'] * 100) / $totalErrores, 2),
         'pu' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pu'] * 100) / $totalErrores, 2),
         'pm' => ($totalErrores == 0) ? 0 : round(($this->view->tablaDefecEliminados['pm'] * 100) / $totalErrores, 2),
@@ -310,13 +328,14 @@
         'id' => getdate()[0],
         'planeacion' => (isset($_POST['planeacion'])) ? $_POST['planeacion'] : '',
         'design' => (isset($_POST['design'])) ? $_POST['design'] : '',
+        'designRevisado' => (isset($_POST['designRevisado'])) ? $_POST['designRevisado'] : '',
         'codigo' => (isset($_POST['codigo'])) ? $_POST['codigo'] : '',
+        'codigoRevisado' => (isset($_POST['codigoRevisado'])) ? $_POST['codigoRevisado'] : '',
         'compilar' => (isset($_POST['compilar'])) ? $_POST['compilar'] : '',
         'ut' => (isset($_POST['ut'])) ? $_POST['ut'] : '',
         'pm' => (isset($_POST['pm'])) ? $_POST['pm'] : '',
         'idpu' => $idProyectoUsuario,
       ];
-
       foreach ($data as $value) {
         if($value == ''){
           $this->view->redirect('gestionProyecto/summary');
@@ -338,7 +357,9 @@
         'id' => getdate()[0],
         'planeacion' => (isset($_POST['planeacion'])) ? $_POST['planeacion'] : '',
         'design' => (isset($_POST['design'])) ? $_POST['design'] : '',
+        'designRevisado' => (isset($_POST['designRevisado'])) ? $_POST['designRevisado'] : '',
         'codigo' => (isset($_POST['codigo'])) ? $_POST['codigo'] : '',
+        'codigoRevisado' => (isset($_POST['codigoRevisado'])) ? $_POST['codigoRevisado'] : '',
         'compilar' => (isset($_POST['compilar'])) ? $_POST['compilar'] : '',
         'ut' => (isset($_POST['ut'])) ? $_POST['ut'] : '',
         'pm' => (isset($_POST['pm'])) ? $_POST['pm'] : '',
@@ -363,7 +384,9 @@
         'id' => getdate()[0],
         'planeacion' => (isset($_POST['planeacion'])) ? $_POST['planeacion'] : '',
         'design' => (isset($_POST['design'])) ? $_POST['design'] : '',
+        'designRevisado' => (isset($_POST['designRevisado'])) ? $_POST['designRevisado'] : '',
         'codigo' => (isset($_POST['codigo'])) ? $_POST['codigo'] : '',
+        'codigoRevisado' => (isset($_POST['codigoRevisado'])) ? $_POST['codigoRevisado'] : '',
         'compilar' => (isset($_POST['compilar'])) ? $_POST['compilar'] : '',
         'ut' => (isset($_POST['ut'])) ? $_POST['ut'] : '',
         'pm' => (isset($_POST['pm'])) ? $_POST['pm'] : '',
