@@ -19,6 +19,7 @@
   <script src="<?php echo constant('URL') ?>public/js/tiempos.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/errores.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/formulario-programador.js"></script>
+  <script src="<?php echo constant('URL') ?>public/js/reportes.js"></script>
 
 </body>
 </html>
