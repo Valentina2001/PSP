@@ -231,9 +231,9 @@
       ];
 
       $this->view->planEficienciaDefectosRemovidosDos = [
-        'dr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehdr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
-        'cr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehcr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
-        'c' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 :$this->view->planEficienciaDefectosRemovidos['ehc'] / $this->view->planEficienciaDefectosRemovidos['ehpu'],
+        'dr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->planEficienciaDefectosRemovidos['ehdr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'], 2),
+        'cr' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->planEficienciaDefectosRemovidos['ehcr'] / $this->view->planEficienciaDefectosRemovidos['ehpu'], 2),
+        'c' => ($this->view->planEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->planEficienciaDefectosRemovidos['ehc'] / $this->view->planEficienciaDefectosRemovidos['ehpu'], 2),
       ];
 
       $this->view->actualEficienciaDefectosRemovidos = [
@@ -244,9 +244,9 @@
       ];
 
       $this->view->actualEficienciaDefectosRemovidosDos = [
-        'dr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehdr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
-        'cr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehcr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
-        'c' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : $this->view->actualEficienciaDefectosRemovidos['ehc'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'],
+        'dr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->actualEficienciaDefectosRemovidos['ehdr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'], 2),
+        'cr' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->actualEficienciaDefectosRemovidos['ehcr'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'], 2),
+        'c' => ($this->view->actualEficienciaDefectosRemovidos['ehpu'] == 0) ? 0 : round($this->view->actualEficienciaDefectosRemovidos['ehc'] / $this->view->actualEficienciaDefectosRemovidos['ehpu'], 2),
       ];
 
       $this->view->render('gestionProyecto/summary');
@@ -535,7 +535,7 @@
 
       if($this->model->validarAsociado($this->cedula, $idProyecto)['terminado'] == 1){
         $this->errores();
-        echo "<script>swal('PSP', 'El proyecto ya se termino, NO puedes realizar más cambios en el', 'warning')</script>";
+        echo "<script>swal('PSP', 'El proyecto ya se terminó, NO puedes realizar más cambios en el', 'warning')</script>";
 
       }else if($data['descripcionError'] == '' || $data['descripcionSolucion'] == ''){
         $this->errores();
@@ -546,7 +546,7 @@
         $this->model->actualizar($data);
 
         $this->errores();
-        echo "<script>swal('PSP', 'Se actualizo correctametne', 'success')</script>";
+        echo "<script>swal('PSP', 'Se actualizó correctamente', 'success')</script>";
       }
     }
 
@@ -678,7 +678,7 @@
       $this->model->insert($data);
 
       $this->reportes();
-      echo "<script>swal('PSP', 'El reporte fue guardado cone exito', 'success')</script>";
+      echo "<script>swal('PSP', 'El reporte fue guardado con exíto', 'success')</script>";
     }
 
     function reportesEliminar($id = 'nada'){

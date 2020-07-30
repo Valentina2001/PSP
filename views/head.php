@@ -14,6 +14,8 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
 
     <link rel="stylesheet" href="<?php echo constant('URL') ?>/public/css/index.css">
     <title><?php echo (empty($title))? "PSP" : $title ?></title>

@@ -68,18 +68,28 @@ function iniciarContador(){
       mes = (fecha.getMonth() + 1)
     }
 
+
     if(fecha.getDate() < 9){
       dia = '0' + fecha.getDate()
     }else{
       dia = fecha.getDate()
     }
     document.getElementById('fechaIn').value = fecha.getFullYear() + '-' + mes  + '-' + dia
+    hora = ''
+
+    if(fecha.getHours() < 10 ){
+      hora += '0' + fecha.getHours()
+    }else{
+      hora += fecha.getHours()
+    }
 
     if(fecha.getMinutes() < 10){
-      document.getElementById('horaIn').value = fecha.getHours() + ':' + '0' + fecha.getMinutes()
+        hora += ':0' + fecha.getMinutes()
     }else{
-      document.getElementById('horaIn').value = fecha.getHours() + ':' + fecha.getMinutes()
+        hora += ':' + fecha.getMinutes()
     }
+      document.getElementById('horaIn').value = hora
+
     primerizo = false
   }
 
@@ -154,10 +164,21 @@ function guardarContador(){
 
   document.getElementById('ctaGuardar').removeAttribute('disabled');
   document.getElementById('fechaOut').value = fecha.getFullYear() + '-' + mes  + '-' + dia
-  if(fecha.getMinutes() < 10){
-    document.getElementById('horaOut').value = fecha.getHours() + ':' + '0' + fecha.getMinutes()
+
+  hora = ''
+
+  if(fecha.getHours() < 10 ){
+    hora += '0' + fecha.getHours()
   }else{
-    document.getElementById('horaOut').value = fecha.getHours() + ':' + fecha.getMinutes()
+    hora += fecha.getHours()
   }
+
+  if(fecha.getMinutes() < 10){
+      hora += ':0' + fecha.getMinutes()
+  }else{
+      hora += ':' + fecha.getMinutes()
+  }
+    document.getElementById('horaOut').value = hora
+
   document.getElementById('interruptor').value = interrupciones
 }

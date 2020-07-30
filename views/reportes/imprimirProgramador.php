@@ -1,9 +1,6 @@
 <?php
 
   function imprimirMensaje($data){
-    // echo "<pre>";
-    // var_dump($data);
-
     echo "
     <div class='col-12 col-md-4'>
       <table class='table table-borbered table-sm'>

@@ -6,7 +6,6 @@
   <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://kit.fontawesome.com/88309981a0.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script src="<?php echo constant('URL') ?>public/js/login.js"></script>
   <script src="<?php echo constant('URL') ?>public/js/aside.js"></script>

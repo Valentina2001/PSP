@@ -2,7 +2,7 @@
     <ul class="aside__container">
         <?php
           $rol = $this->sesion->getSesion('usuario')[4];
-
+          echo "<p class='d-none' id='url'>".constant('URL')."</p>";
           switch ($rol) {
             case 'administrador':
               echo '
@@ -21,7 +21,7 @@
                   <div class="aside__link"><i class="aside__icon left fas fa-project-diagram"></i><a href="'.constant('URL').'lenguajes" >Lenguajes</a></div>
               </li>
               <li class="aside__item">
-                  <div class="aside__link"><i class="aside__icon left fas fa-chart-bar"></i><a href="'.constant('URL').'ReportesGenerales" >Reportes</a></div>
+                  <div class="aside__link"><i class="aside__icon left fas fa-chart-bar"></i><a href="'.constant('URL').'ReportesGenerales" >Reportes generales</a></div>
               </li>
               ';
               break;

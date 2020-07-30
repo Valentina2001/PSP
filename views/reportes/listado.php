@@ -22,7 +22,7 @@
         <div class="content__head">
           <div class="content__search pb-4">
             <div class="input-group">
-              <input type="text" class="form-control " id="search" placeholder="Buscar programador">
+              <input type="text" class="form-control " id="searchReporte" placeholder="Buscar programador">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
@@ -32,11 +32,14 @@
         <div class="content__info">
           <?php
             foreach ($this->data as $row) {
-              if(!empty($row['proyectos'])){
+              // $mostrar = (count($row['proyectos']) < 3) ? false : true;
+              $mostrar = true;
+
+              if($mostrar){
                 echo '
                 <div class="container-programador">
                   <div class="row d-flex align-items-center pb-4">
-                    <div class="col-12 col-md-6 ">' . $row['nombre'] .' '. $row['apellido'] .'
+                    <div class="col-12 col-md-6 nombres">' . $row['nombre'] .' '. $row['apellido'] .'
                   </div>
                   <div class="col-12 col-md-6 text-right">
                     <a href="'.constant('URL').'ReportesGenerales/reporte/'.$row['cedulaUsuario'].'" class="btn btn-outline-info">Ver graficas personalizadas</a>
@@ -50,8 +53,6 @@
                     </div>
                   </div>
                 </div><hr>';
-
-
               }
             }
           ?>

@@ -4,7 +4,9 @@
     function __construct(){
       parent::__construct();
       $this->view->sesion->sesionStart();
-
+      if($this->view->sesion->getSesion('usuario')[4] == 'programador' ){
+        $this->view->redirect('dashboard');
+      }
     }
 
     function render(){
@@ -19,7 +21,15 @@
         $this->view->redirect('ReportesGenerales');
       }
 
-      echo "trabajando en ello, no acose :V $cedula[0] ";
+      $this->loadModel('ReportesPersonModel');
+      $this->view->data = $this->model->getData($cedula[0]);
+
+      if($this->view->data == false){
+        $this->view->redirect('ReportesGenerales');
+      }
+
+      $this->view->render('reportes/graficas');
+      // echo "trabajando en ello, no acose :V $cedula[0] ";
     }
   }
 ?>
