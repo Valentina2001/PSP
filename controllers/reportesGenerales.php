@@ -4,8 +4,10 @@
     function __construct(){
       parent::__construct();
       $this->view->sesion->sesionStart();
-      if($this->view->sesion->getSesion('usuario')[4] == 'programador' ){
-        $this->view->redirect('dashboard');
+      if($this->view->sesion->getSesion('usuario') == -1){
+          $this->view->redirect('dashboard');
+      }else if($this->view->sesion->getSesion('usuario')[4] == 'programador' ){
+        $this->view->redirect('');
       }
     }
 

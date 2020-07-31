@@ -34,12 +34,12 @@
 
                     var data = google.visualization.arrayToDataTable([
                       ['Task', ''],
-                      ['PSP 0.0', 5],
-                      ['PSP 0.1', 5],
-                      ['PSP 1.0', 5],
-                      ['PSP 1.1', 5],
-                      ['PSP 2.0', 5],
-                      ['PSP 2.1', 5],
+                      ['PSP 0.0', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp0'] ?>],
+                      ['PSP 0.1', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp01'] ?>],
+                      ['PSP 1.0', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp1'] ?>],
+                      ['PSP 1.1', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp11'] ?>],
+                      ['PSP 2.0', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp20'] ?>],
+                      ['PSP 2.1', <?php echo $this->data['proyecto']['sumaTiempoProceso']['psp21'] ?>],
                     ]);
 
                     var options = {
@@ -63,13 +63,15 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task','Tiempos'],
+                      ['Planeación',  <?php echo $this->data['proyecto']['tiempoPorc']['fase01'] ?>],
+                      ['Compilación', <?php echo $this->data['proyecto']['tiempoPorc']['fase06'] ?>],
+                      ['Pruebas Un.', <?php echo $this->data['proyecto']['tiempoPorc']['fase07'] ?>],
+                      ['PostMortem',  <?php echo $this->data['proyecto']['tiempoPorc']['fase08'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Tiempos',
                       is3D: true,
                       legend: {position: 'right', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -91,13 +93,13 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'Valor'],
+                      ['Planeación',  <?php echo $this->data['proyecto']['tiempoPlaneacion']['fase01'] ?>],
+                      ['PostMortem',  <?php echo $this->data['proyecto']['tiempoPlaneacion']['fase08'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Tiempo de planeación',
                       is3D: true,
                       legend: {position: 'left', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -117,13 +119,13 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'No. Errores'],
+                      ['Diseño',  <?php echo $this->data['proyecto']['defectosInyectados']['fase02'] ?>],
+                      ['Código',  <?php echo $this->data['proyecto']['defectosInyectados']['fase04'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Defectos inyectados en:',
                       is3D: true,
                       legend: {position: 'bottom', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -145,13 +147,16 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'No. Defectos'],
+
+                      ['Diseño Rev.',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase03'] ?>],
+                      ['Código',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase04'] ?>],
+                      ['Compilación',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase06'] ?>],
+                      ['Pruebas Uni.',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase07'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Defectos removidos en:',
                       is3D: true,
                       legend: {position: 'bottom', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -171,13 +176,13 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'No. Defectos'],
+                      ['Compilación',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase06'] ?>],
+                      ['Pruebas Uni.',  <?php echo $this->data['proyecto']['defectosRemovidos']['fase07'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Defectos removidos en',
                       is3D: true,
                       legend: {position: 'bottom', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -199,13 +204,21 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'No. Defectos'],
+                      ['Documentación',    <?php echo $this->data['proyecto']['defectosTipo']['error01'] ?>],
+                      ['Sintaxis/Estatica',<?php echo $this->data['proyecto']['defectosTipo']['error02'] ?>],
+                      ['Compilación',      <?php echo $this->data['proyecto']['defectosTipo']['error03'] ?>],
+                      ['Asignación',       <?php echo $this->data['proyecto']['defectosTipo']['error04'] ?>],
+                      ['Interfaz',         <?php echo $this->data['proyecto']['defectosTipo']['error05'] ?>],
+                      ['Comprobación',     <?php echo $this->data['proyecto']['defectosTipo']['error06'] ?>],
+                      ['Datos',            <?php echo $this->data['proyecto']['defectosTipo']['error07'] ?>],
+                      ['Función',          <?php echo $this->data['proyecto']['defectosTipo']['error08'] ?>],
+                      ['Temporización',    <?php echo $this->data['proyecto']['defectosTipo']['error09'] ?>],
+                      ['Entorno' ,         <?php echo $this->data['proyecto']['defectosTipo']['error10'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Defectos removidos por tipo',
                       is3D: true,
                       legend: {position: 'bottom', textStyle: {fontSize: 13, bold: true}},
                     };
@@ -225,13 +238,21 @@
                   function drawChart() {
 
                     var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Plan inyectados', 'Actual inyectados'],
-                      ['Planeación',  5, 2],
-                      ['Diseño',      5, 2],
+                      ['Task', 'Minutos Defectos'],
+                      ['Documentación',    <?php echo $this->data['proyecto']['defectosTiempo']['error01'] ?>],
+                      ['Sintaxis/Estatica',<?php echo $this->data['proyecto']['defectosTiempo']['error02'] ?>],
+                      ['Compilación',      <?php echo $this->data['proyecto']['defectosTiempo']['error03'] ?>],
+                      ['Asignación',       <?php echo $this->data['proyecto']['defectosTiempo']['error04'] ?>],
+                      ['Interfaz',         <?php echo $this->data['proyecto']['defectosTiempo']['error05'] ?>],
+                      ['Comprobación',     <?php echo $this->data['proyecto']['defectosTiempo']['error06'] ?>],
+                      ['Datos',            <?php echo $this->data['proyecto']['defectosTiempo']['error07'] ?>],
+                      ['Función',          <?php echo $this->data['proyecto']['defectosTiempo']['error08'] ?>],
+                      ['Temporización',    <?php echo $this->data['proyecto']['defectosTiempo']['error09'] ?>],
+                      ['Entorno' ,         <?php echo $this->data['proyecto']['defectosTiempo']['error10'] ?>],
                     ]);
 
                     var options = {
-                      title: 'Defec. por face vs plan defec. fase',
+                      title: 'Tiempo en cada error',
                       is3D: true,
                       legend: {position: 'bottom', textStyle: {fontSize: 13, bold: true}},
                     };
