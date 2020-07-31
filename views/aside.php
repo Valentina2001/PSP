@@ -101,7 +101,7 @@
                 }else{
                   echo '
                   <li class="aside__item">
-                  <div class="aside__link"><i class="aside__icon left fas fa-chart-bar"></i><a href="#" >Reportes generales</a></div>
+                  <div class="aside__link"><i class="aside__icon left fas fa-chart-bar"></i><a href="'.constant('URL').'gestionProyecto/reportesGenerales" >Reportes generales</a></div>
                   </li>
                   ';
                 }

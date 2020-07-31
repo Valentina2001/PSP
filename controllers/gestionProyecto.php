@@ -53,6 +53,19 @@
 
     }
 
+    function reportesGenerales(){
+      $cedula = $this->view->sesion->getSesion('usuario')[3];
+
+      $this->loadModel('ReportesPersonModel');
+      $this->view->data = $this->model->getData($cedula);
+
+      if($this->view->data == false){
+        $this->view->redirect('ReportesGenerales');
+      }
+
+      $this->view->render('reportes/graficas');
+    }
+
     function cerrarProyecto(){
       $this->view->sesion->unset('proyecto');
       $this->view->redirect('');

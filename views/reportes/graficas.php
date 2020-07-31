@@ -19,7 +19,11 @@
             <input type="text" name="" value="<?php echo $this->data['fechaIn'] ?>" id="proyecto" class="form-control" disabled>
           </div>
           <div class="col-2 d-flex justify-content-center align-items-end pb-1">
-            <a href="#" class="btn btn-outline-primary fas fa-search buscar-reporte"></a>
+            <?php
+              if($this->sesion->getSesion('usuario')[4] == 'administrador'){
+                echo '<a href="#" class="btn btn-outline-primary fas fa-search buscar-reporte"></a>';
+              }
+             ?>
           </div>
         </div>
       </div>
