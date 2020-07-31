@@ -1,4 +1,4 @@
-<?php $title = "Programadores | Actualizar"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Programadores | Formulario actualizar"; include_once "views/head.php"; include_once "views/header.php"?>
 <section class="section">
   <div class="swiper-container">
     <form  action="<?php echo constant('URL') ?>programador/update" method="POST"  class="swiper-wrapper" enctype="multipart/form-data">

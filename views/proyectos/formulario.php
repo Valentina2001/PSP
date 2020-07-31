@@ -1,4 +1,4 @@
-<?php $title = "Proyectos | Nuevo"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Proyectos | Gestión de proyecto"; include_once "views/head.php"; include_once "views/header.php"?>
 
 <section class="section pt-4">
   <form name="formulario" method="POST"  action="<?php echo constant('URL') ?>/proyectos/crear">
@@ -54,7 +54,6 @@
                 }
               ?>
             </select>
-            <!-- <input type="text" class="form-control" placeholder="Medida" name="medida"> -->
           </div>
           <div class="form-group">
             <?php

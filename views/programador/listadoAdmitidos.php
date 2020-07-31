@@ -25,7 +25,6 @@
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
             </div>
-            <a href="<?php echo constant('URL') ?>programador/formAdmin" title="Crear Programador" class="ml-4 btn btn-outline-success">Crear</a>
           </div>
         </div>
 

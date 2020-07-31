@@ -1,4 +1,4 @@
-<?php $title = "Administrador | Actualizar info"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Administrador | Actualizar información"; include_once "views/head.php"; include_once "views/header.php"?>
 
 <section class="section">
   <form name="formulario" method="POST"  action="<?php echo constant('URL') ?>administrador/update"  class="swiper-wrapper" enctype="multipart/form-data">
@@ -22,7 +22,7 @@
               <input name="nombre" type="text" placeholder="Nombres Completo" class="form-control mr-2" value="<?php echo $this->data['nombre'] ?>" required>
               <input name="apellido" type="text" placeholder="Apellidos Completo" class="form-control" value="<?php echo $this->data['apellido'] ?>" required>
             </div>
-            <input name="email" type="email" placeholder="Correo electronico" class="form-control" value="<?php echo $this->data['email'] ?>" required>
+            <input name="email" type="email" placeholder="Correo electrónico" class="form-control" value="<?php echo $this->data['email'] ?>" required>
             <div class="input-group">
               <input name="usuario" type="text" placeholder="Usuario" class="form-control" value="<?php echo $this->data['user'] ?>" required>
             </div>

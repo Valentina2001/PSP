@@ -1,4 +1,4 @@
-<?php $title = "Lenguajes | Listado errroes"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Lenguajes | Listado errrores"; include_once "views/head.php"; include_once "views/header.php"?>
 
 
 <section class="section">

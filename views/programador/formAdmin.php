@@ -1,4 +1,4 @@
-<?php $title = "Programadores | Nuevo"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Programadores | Perfil administrador"; include_once "views/head.php"; include_once "views/header.php"?>
 
 <section class="section pt-4">
   <form name="formulario" method="POST"  action="<?php echo constant('URL') ?>/programador/nuevo"  class=" login__content" enctype="multipart/form-data">

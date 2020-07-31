@@ -80,12 +80,12 @@
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12 col-md-4">
-                      Descripcion del problema
-                      <textarea name="problema" rows="6" cols="80" class="form-control" placeholder="Comentarios del problema" required id="mProblema"></textarea>
+                      Descripción del problema
+                      <textarea name="problema" rows="6" cols="80" class="form-control" placeholder="Descripción del problema" required id="mProblema"></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
-                      Descripcion de la propuesta
-                      <textarea name="propuesta" rows="6" cols="80" class="form-control" placeholder="Descripcion de la propuesta" required id="mPropuesta"></textarea>
+                      Descripción de la propuesta
+                      <textarea name="propuesta" rows="6" cols="80" class="form-control" placeholder="Descripción de la propuesta" required id="mPropuesta"></textarea>
                     </div>
                     <div class="form-group col-12 col-md-4">
                       Comentarios

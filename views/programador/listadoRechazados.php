@@ -1,4 +1,4 @@
-<?php $title = "Programadores | Listado"; include_once "views/head.php"; include_once "views/header.php"?>
+<?php $title = "Programadores | Listado de rechazados"; include_once "views/head.php"; include_once "views/header.php"?>
 
 <section class="section">
     <div class="content py-3 px-4">
@@ -25,7 +25,6 @@
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
             </div>
-            <a href="<?php echo constant('URL') ?>programador/formAdmin" title="Crear Programador" class="ml-4 btn btn-outline-success">Crear</a>
           </div>
         </div>
 
@@ -39,7 +38,7 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Correo electronico</th>
                         <th scope="col">Usuario</th>
-                        <th scope="col" colspan="2">Acciones</th>
+                        <th scope="col" colspan="3">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -75,6 +74,8 @@
                                     // <i class="far fa-check-square"></i>
                                     echo "<td><a href='#' data-toggle='modal' class='btn btn-outline-primary visualizar-modal fas fa-info' data-target='#detallesProgramador' ></a>";
                                     echo "</td><td><a href='".constant('URL')."programador/setAspirante/".$this->data[$i]['cedula']."' class='btn btn-outline-info fas fa-check'></a> </td>";
+                                    echo "</td><td><a href='".constant('URL')."/programador/eliminar/". $this->data[$i]['cedula']."' class='btn btn-outline-danger far fa-trash-alt'></a> </td> </tr>";
+
                                 }
                             ?>
                         </tr>
