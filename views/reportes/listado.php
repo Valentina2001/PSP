@@ -32,9 +32,7 @@
         <div class="content__info">
           <?php
             foreach ($this->data as $row) {
-              // $mostrar = (count($row['proyectos']) < 3) ? false : true;
-              $mostrar = true;
-
+              $mostrar = (count($row['proyectos']) < 3) ? false : true;
               if($mostrar){
                 echo '
                 <div class="container-programador">
