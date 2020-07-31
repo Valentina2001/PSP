@@ -553,7 +553,7 @@
               </div>
         </form>
       </div>
-      <?php if($this->sesion->getSesion('proyecto')['proceso'] != 'psp0' and $this->sesion->getSesion('proyecto')['proceso'] != 'psp01' and $this->sesion->getSesion('proyecto')['proceso'] != 'psp10' ){
+      <?php if($this->sesion->getSesion('proyecto')['proceso'] == 'psp20' ||  $this->sesion->getSesion('proyecto')['proceso'] == '´psp21' ){
       echo '
       <h3><b>Eficiencia de defectos removidos</b></h3>
       <form class="table pb-4" method="post" action="'.constant('URL').'gestionProyecto/insertResumenProyecto">

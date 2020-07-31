@@ -237,10 +237,10 @@
       $this->view->actualResumenProductividad = round((($totalMinutos == 0 || $this->view->resumenProyecto['actual'] == 0) ? 0 : $this->view->resumenProyecto['actual'] / $totalMinutos) * 60, 2);
 
       $this->view->planEficienciaDefectosRemovidos = [
-        'ehdr' => ($this->view->planTiempos['designRevisado'] == 0) ? 0 : round(($this->view->planDefecEliminados['designRevisado'] / $this->view->planTiempos['designRevisado'] ) * 60, 2),
-        'ehcr' => ($this->view->planTiempos['codigoRevisado'] == 0) ? 0 : round(($this->view->planDefecEliminados['codigoRevisado'] / $this->view->planTiempos['codigoRevisado'] ) * 60, 2),
-        'ehc' => ($this->view->planTiempos['compilacion'] == 0) ? 0 : round(($this->view->planDefecEliminados['compilacion'] / $this->view->planTiempos['compilacion'] ) * 60, 2),
-        'ehpu' => ($this->view->planTiempos['pu'] == 0) ? 0 : round(($this->view->planDefecEliminados['pu'] / $this->view->planTiempos['pu'] ) * 60, 2),
+        'ehdr' => ($this->view->planTiempos['designRevisado'] <= 0 || $this->view->planDefecEliminados['designRevisado'] <= 0) ? 0 : round(($this->view->planDefecEliminados['designRevisado'] / $this->view->planTiempos['designRevisado'] ) * 60, 2),
+        'ehcr' => ($this->view->planTiempos['codigoRevisado'] <= 0 || $this->view->planDefecEliminados['codigoRevisado'] <= 0) ? 0 : round(($this->view->planDefecEliminados['codigoRevisado'] / $this->view->planTiempos['codigoRevisado'] ) * 60, 2),
+        'ehc' => ($this->view->planTiempos['compilacion'] <= 0 || $this->view->planDefecEliminados['compilacion'] <= 0) ? 0 : round(($this->view->planDefecEliminados['compilacion'] / $this->view->planTiempos['compilacion'] ) * 60, 2),
+        'ehpu' => ($this->view->planTiempos['pu'] <= 0 || $this->view->planDefecEliminados['pu'] <= 0) ? 0 : round(($this->view->planDefecEliminados['pu'] / $this->view->planTiempos['pu'] ) * 60, 2),
       ];
 
       $this->view->planEficienciaDefectosRemovidosDos = [
